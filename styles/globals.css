@@ -1,0 +1,27 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    height: 100%;
+    width: 100%;
+    color: white;
+    
+}
+
+body{
+  background: linear-gradient(180deg, #273137 0%, rgba(39, 49, 55, 0.52) 100%),
+    linear-gradient(243.33deg, #4c15eb 5.62%, #245aaa 74.42%, #0dd1dd 127.92%);
+    background-size: auto;
+
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
