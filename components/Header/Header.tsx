@@ -5,23 +5,30 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 
 export default function Header() {
-  const [searchValue, setSearchValue] = useState("");
+  const [searchValue, setSearchValue] = useState([]);
   const router = useRouter();
+  const slug = router.query.slug || [];
 
   const handleSearchTextChange = (e) => {
-    setSearchValue(e.target.value);
+    let value = e.target.value;
+    let parsedValues = value.split("/");
+    setSearchValue(parsedValues);
   };
 
   const submitSearch = (e) => {
-    router.push("/repo/github/user/repo");
+    router.push(`/repo/${slug[0]}/${searchValue[0]}/${searchValue[1]}`);
   };
-
 
   return (
     <HeaderWrapper>
       <LeftPart>
         <Image onClick={submitSearch} width="135" height="30" src={logo} />
-        <SearchBox onChange={handleSearchTextChange} className="d" name="" id="" />
+        <SearchBox
+          onChange={handleSearchTextChange}
+          className=""
+          name=""
+          id=""
+        />
       </LeftPart>
       <RightPart>
         <ul>
@@ -70,6 +77,7 @@ const RightPart = styled.div`
 
     margin: 0;
     li {
+      font-weight: bold;
       list-style: none;
       padding-right: 10px;
     }

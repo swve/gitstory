@@ -39,15 +39,14 @@ export default function Repo() {
   );
 }
 
-
-
 const GradientHeader = styled.div`
   height: 380px;
   padding-left: 130px;
   padding-right: 130px;
   padding-top: 30px;
 
-  background: linear-gradient(180deg, #00101B 0%, rgba(39, 49, 55, 0.52) 100%), linear-gradient(243.33deg, #4C15EB 5.62%, #245AAA 74.42%, #0DD1DD 127.92%);
+  background: linear-gradient(180deg, #13161a 0%, rgba(39, 49, 55, 0.52) 100%),
+    linear-gradient(243.33deg, #280b7d 5.62%, #245aaa 74.42%, #0dd1dd 127.92%);
 `;
 
 const RepoBar = styled.div`

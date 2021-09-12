@@ -156,7 +156,8 @@ const DayOfWeek = styled.div`
 `;
 
 const CalendarBox = styled.div`
-  background-color: #1b2227;
+  background-color: #171d21e6;
+  backdrop-filter: saturate(180%) blur(14px);
   width: fit-content;
   height: 307px;
   border-radius: 6px;

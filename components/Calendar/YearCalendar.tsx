@@ -2,7 +2,7 @@ import React from "react";
 import Calendar from "@components/Calendar/Calendar";
 import styled from "styled-components";
 
-export default function YearCalendar({withRelativeTop=false,year}) {
+export default function YearCalendar({ withRelativeTop = false, year }) {
   // 📣 Filling & Init the YearCalendar
   //--------------------------------
 
@@ -14,6 +14,9 @@ export default function YearCalendar({withRelativeTop=false,year}) {
       year_dates.push(`${year}-${i + 1}-1`);
     }
   }
+
+  createYearDates(year);
+
 
   // 📣 Styling
   //--------------------------------
@@ -28,8 +31,6 @@ export default function YearCalendar({withRelativeTop=false,year}) {
     margin: auto;
     justify-content: center;
   `;
-
-  createYearDates(year);
 
   // 📣 Final Rendering
   //--------------------------------
