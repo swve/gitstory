@@ -147,7 +147,7 @@ const DayOfWeek = styled.div`
   justify-content: center;
   align-items: center;
   //
-  border-width: 1px;
+  border-width: 0.1px;
   color: #ffffff63;
 
   i {
@@ -169,5 +169,6 @@ const CalendarBox = styled.div`
   h2 {
     text-align: center;
     font-size: 15px;
+    opacity: 0.9;
   }
 `;

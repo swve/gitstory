@@ -1,12 +1,11 @@
 import React from "react";
-import dayjs from "dayjs";
-import Calendar from "./Calendar";
+import Calendar from "@components/Calendar/Calendar";
 import styled from "styled-components";
 
-export default function YearCalendar(props) {
+export default function YearCalendar({withRelativeTop=false,year}) {
   // 📣 Filling & Init the YearCalendar
   //--------------------------------
-  const year = props.year;
+
   let year_dates = [];
 
   // Fill a Year of Month dates
@@ -16,23 +15,29 @@ export default function YearCalendar(props) {
     }
   }
 
+  // 📣 Styling
+  //--------------------------------
+  const YearCalendarBox = styled.div`
+    ${withRelativeTop &&
+    `top:-160px;
+      position:relative;
+`}
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: auto;
+    justify-content: center;
+  `;
+
   createYearDates(year);
 
+  // 📣 Final Rendering
+  //--------------------------------
   return (
     <YearCalendarBox>
       {year_dates.map((date) => {
-        return <Calendar date={date} />;
+        return <Calendar key={date} date={date} />;
       })}
     </YearCalendarBox>
   );
 }
-
-// 📣 Styling
-//--------------------------------
-const YearCalendarBox = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  margin: auto;
-  justify-content: center;
-`;
