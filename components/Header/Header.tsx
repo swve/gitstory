@@ -4,7 +4,7 @@ import logo from "@images/gitstory.png";
 import Image from "next/image";
 import { useRouter } from "next/router";
 
-export default function Header() {
+export default function Header({ withLeftPart = true, withPaddings = false }) {
   const [searchValue, setSearchValue] = useState([]);
   const router = useRouter();
   const slug = router.query.slug || [];
@@ -20,15 +20,16 @@ export default function Header() {
   };
 
   return (
-    <HeaderWrapper>
+    <HeaderWrapper withPaddings={withPaddings}>
       <LeftPart>
-        <Image onClick={submitSearch} width="135" height="30" src={logo} />
-        <SearchBox
-          onChange={handleSearchTextChange}
-          className=""
-          name=""
-          id=""
-        />
+        {withLeftPart ? (
+          <>
+            <Image onClick={submitSearch} width="135" height="30" src={logo} />
+            <SearchBox onChange={handleSearchTextChange} className="" name="" id="" />{" "}
+          </>
+        ) : (
+          ""
+        )}
       </LeftPart>
       <RightPart>
         <ul>
@@ -41,11 +42,20 @@ export default function Header() {
   );
 }
 
-const HeaderWrapper = styled.div`
+interface HeaderProps {
+  readonly withPaddings: boolean;
+}
+
+const HeaderWrapper = styled.div<HeaderProps>`
   display: flex;
-  //margin-left: 130px;
-  //margin-right: 130px;
-  //margin-top: 30px;
+
+  ${(props) =>
+    props.withPaddings &&
+    `
+    padding-left: 130px;
+    padding-right: 130px;
+    padding-top: 30px;
+`}
   justify-content: space-between;
 `;
 

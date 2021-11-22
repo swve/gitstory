@@ -2,12 +2,13 @@ import Header from "@components/Header/Header";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import YearCalendar from "../../components/Calendar/YearCalendar";
+import YearCalendar from "@components/Calendar/YearCalendar";
 
 export default function Repo() {
   const router = useRouter();
   const slug = router.query.slug || [];
   const [year, setYear] = useState(0);
+
   function redirectTo404() {
     router.push("/404");
   }
@@ -45,13 +46,12 @@ const GradientHeader = styled.div`
   padding-right: 130px;
   padding-top: 30px;
 
-  background: linear-gradient(180deg, #13161a 0%, rgba(39, 49, 55, 0.52) 100%),
-    linear-gradient(243.33deg, #280b7d 5.62%, #245aaa 74.42%, #0dd1dd 127.92%);
+  background: linear-gradient(180deg, #13161a 0%, rgba(39, 49, 55, 0.52) 100%), linear-gradient(243.33deg, #280b7d 5.62%, #245aaa 74.42%, #0dd1dd 127.92%);
 `;
 
 const RepoBar = styled.div`
   padding-top: 40px;
-  font-size: 50px;
+  font-size: 40px;
   font-weight: bold;
 `;
 
