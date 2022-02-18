@@ -1,4 +1,4 @@
-import Header from "@components/Header/Header";
+import Header from "@components/Header/InsideHeader";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
@@ -8,14 +8,6 @@ export default function Repo() {
   const router = useRouter();
   const slug = router.query.slug || [];
   const [year, setYear] = useState(0);
-
-  function redirectTo404() {
-    router.push("/404");
-  }
-
-  useEffect(() => {
-    console.log(slug);
-  });
 
   function handleYear() {
     setYear(Math.floor(1000 + Math.random() * 9000));

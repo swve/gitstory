@@ -4,7 +4,7 @@ import styled from "styled-components";
 export default function Footer() {
   return (
     <FooterWrapper>
-      © 2021 Sweave &nbsp;&nbsp;⏤{" "}
+      © 2022 Sweave &nbsp;&nbsp;⏤{" "}
       <ul>
         <li> About</li>
         <li>Privacy</li>
@@ -21,6 +21,8 @@ const FooterWrapper = styled.div`
   padding-left: 130px;
   font-size: 14px;
   display: flex;
+  margin: auto;
+  text-align: center;
 
   ul {
     margin: 0;
