@@ -1,6 +1,7 @@
 import React from "react";
 import dayjs from "dayjs";
 import styled from "styled-components";
+import { randomInt } from "crypto";
 
 export default function Calendar(props) {
   // 📣 Filling & Init the Calendar
@@ -68,7 +69,7 @@ export default function Calendar(props) {
           {weekdaysArray.map((day) => {
             return (
               <DayOfWeek>
-                <i>{day}</i>
+                <i key={day+randomInt} >{day}</i>
               </DayOfWeek>
             );
           })}
@@ -77,7 +78,7 @@ export default function Calendar(props) {
           {calendar.map((day) => {
             return (
               <DayOfMonth onClick={(e) => handleClickDayOfMonth(day, e)}>
-                <i>{day}</i>
+                <i key={day+randomInt}>{day}</i>
               </DayOfMonth>
             );
           })}

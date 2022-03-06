@@ -3,33 +3,83 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import YearCalendar from "@components/Calendar/YearCalendar";
+import { GitSt } from "@services/gitstory";
 
 export default function Repo() {
   const router = useRouter();
   const slug = router.query.slug || [];
-  const [year, setYear] = useState(0);
 
-  function handleYear() {
-    setYear(Math.floor(1000 + Math.random() * 9000));
+  // Get today's year
+  const today = new Date();
+  const currentYear = today.getFullYear();
+  const [year, setYear] = useState(currentYear);
+
+  // React State
+  const [activeYears, setActiveYears] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [config, setConfig] = useState({});
+
+  async function getActiveYears() {
+    let active_years;
+    try {
+      const GitStory = new GitSt();
+      GitStory.init({ client: "github", owner: slug[1], repo: slug[2], sha: "master" });
+      active_years = await GitStory.yearsActive();
+    } catch (error) {
+      //router.push("/error/404");
+      console.log("TODO: Redirect to 404");
+      console.log(error);
+      
+    }
+    setActiveYears(active_years);
+    setIsLoading(false);
   }
 
-  return (
-    <>
-      <GradientHeader>
-        <Header></Header>
-        <RepoBar onClick={handleYear}>
-          {slug[1]}/{slug[2]}
-        </RepoBar>
-        <Years>
-          <b>2015</b>
-          <b>2016</b>
-          <b>2017</b>
-          <b>2018</b>
-        </Years>
-      </GradientHeader>
-      <YearCalendar withRelativeTop year={year}></YearCalendar>
-    </>
-  );
+  useEffect(() => {
+    if (router.isReady) {
+      getActiveYears();
+    }
+  }, [isLoading,router.isReady]);
+
+  
+  if (isLoading) {
+    return (
+      <>
+        <GradientHeader>
+          <Header></Header>
+          <RepoBar>
+            {slug[1]}/{slug[2]}
+          </RepoBar>
+        </GradientHeader>
+        
+      </>
+    );
+  } else {
+    return (
+      <>
+        <GradientHeader>
+          <Header></Header>
+          <RepoBar>
+            {slug[1]}/{slug[2]}
+          </RepoBar>
+          <Years>
+            {activeYears.map((year) => {
+              return (
+                <b
+                  key={year}
+                  onClick={() => {
+                    setYear(year);
+                  }}
+                >
+                  {year}
+                </b>
+              );})}
+          </Years>
+        </GradientHeader>
+        <YearCalendar year={year}></YearCalendar>
+      </>
+    );
+  }
 }
 
 const GradientHeader = styled.div`

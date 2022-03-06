@@ -1,6 +1,7 @@
 import React from "react";
 import Calendar from "@components/Calendar/Calendar";
 import styled from "styled-components";
+import { randomInt } from "crypto";
 
 export default function YearCalendar({ withRelativeTop = false, year }) {
   // 📣 Filling & Init the YearCalendar
@@ -17,28 +18,25 @@ export default function YearCalendar({ withRelativeTop = false, year }) {
 
   createYearDates(year);
 
-
-  // 📣 Styling
-  //--------------------------------
-  const YearCalendarBox = styled.div`
-    ${withRelativeTop &&
-    `top:-160px;
-      position:relative;
-`}
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    margin: auto;
-    justify-content: center;
-  `;
-
   // 📣 Final Rendering
   //--------------------------------
   return (
     <YearCalendarBox>
       {year_dates.map((date) => {
-        return <Calendar key={date} date={date} />;
+        return <Calendar key={date + randomInt} date={date} />;
       })}
     </YearCalendarBox>
   );
 }
+
+// 📣 Styling
+//--------------------------------
+const YearCalendarBox = styled.div`
+  top: -200px;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: auto;
+  justify-content: center;
+`;
