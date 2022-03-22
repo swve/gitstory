@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import YearCalendar from "@components/Calendar/YearCalendar";
 import { GitSt } from "@services/gitstory";
+import Loading from "@components/Loading/Loading";
 
 export default function Repo() {
   const router = useRouter();
@@ -50,6 +51,7 @@ export default function Repo() {
           <RepoBar>
             {slug[1]}/{slug[2]}
           </RepoBar>
+          <Loading></Loading>
         </GradientHeader>
         
       </>
@@ -81,6 +83,9 @@ export default function Repo() {
     );
   }
 }
+
+
+
 
 const GradientHeader = styled.div`
   height: 380px;

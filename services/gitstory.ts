@@ -13,8 +13,6 @@ export class GitSt {
   private client: string;
   private gitstory;
 
-
-  
   // Initialize the gitstory object
   init(params: ParamsInterface) {
     this.client = params.client;
@@ -30,9 +28,15 @@ export class GitSt {
   public async yearsActive() {
     console.log("testing..");
     console.log(this.config);
-    
+
     this.gitstory.init(this.config);
     let years = await this.gitstory.yearsActive();
     return years;
+  }
+
+  public async getCommitsBetween(startDate: string, endDate: string, per_page: number, page: number) {
+    this.gitstory.init(this.config);
+    let commits = await this.gitstory.getCommitsBetweenDates(startDate, endDate, per_page, page);
+    return commits;
   }
 }

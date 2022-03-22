@@ -2,8 +2,12 @@ import React from "react";
 import dayjs from "dayjs";
 import styled from "styled-components";
 import { randomInt } from "crypto";
+import { useRouter } from 'next/router'
 
 export default function Calendar(props) {
+
+  const router = useRouter()
+
   // 📣 Filling & Init the Calendar
   //--------------------------------
 
@@ -56,7 +60,7 @@ export default function Calendar(props) {
   // 📣 Interaction
   //--------------------------------
   function handleClickDayOfMonth(day, e) {
-    alert("Date: " + day + "  " + String(month) + "  " + String(year));
+    router.push('/[...slug]/date/[...date]', `/commits/${router.query.slug[0]}/${router.query.slug[1]}/${router.query.slug[2]}/date/${year}/${month}/${day}`)
   }
 
   // 📣 Rendering
