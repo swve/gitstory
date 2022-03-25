@@ -38,10 +38,10 @@ export default function Calendar(props) {
   let calendar = [];
 
   // Execute Calendar function
-  fillCalendar(date);
+  fillCalendar();
 
   // Fill Calendar in Array
-  function fillCalendar(date) {
+  function fillCalendar() {
     let counter = true;
     weekdaysArray.forEach((day) => {
       if (counter === true) {
