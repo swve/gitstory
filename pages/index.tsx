@@ -7,33 +7,44 @@ import { useRouter } from "next/router";
 import { updateDate } from "@redux/actions";
 
 interface RootState {
-  date: string;
+  selectedDate: string;
 }
 
 export default function Home() {
   const [searchValue, setSearchValue] = useState([]);
-  const state = useSelector((state: RootState) => state.date);
+  const state = useSelector((state: RootState) => state.selectedDate);
   const router = useRouter();
   const dispatch = useDispatch();
   const slug = router.query.slug || [];
-  // get date in iso format 
+  // get date in iso format
 
-
+  const TestDate = new Date("2020-01-01");
   console.log(state);
-  
+
   const handleSearchTextChange = (e) => {
     let value = e.target.value;
     let parsedValues = value.split("/");
     setSearchValue(parsedValues);
   };
 
-
-  return <HomePage>
-
-    { state ? <h1>Hey you're good to go </h1> : <h1>No :/ </h1>}
-    <button onClick={() => {dispatch(updateDate(new Date().toISOString()))}}>debug redux button</button>
-    
-    </HomePage>;
+  return (
+    <HomePage>
+      {state ? <h1>Testing page </h1> : <h1>Test2 </h1>}
+      <button
+        onClick={() => {
+          dispatch(
+            updateDate({
+              day: 11,
+              month: 11,
+              year: 1,
+            })
+          );
+        }}
+      >
+        debug redux button
+      </button>
+    </HomePage>
+  );
 }
 
 const HomePage = styled.div`

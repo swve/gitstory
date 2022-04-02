@@ -12,6 +12,7 @@
     "@types/react-redux": "^7.1.23",
     "dayjs": "^1.10.6",
     "gitstorykit": "^1.1.0",
+    "localStorage": "^1.0.4",
     "next": "^12.1.0",
     "nextjs-progressbar": "^0.0.14",
     "prop-types": "^15.7.2",

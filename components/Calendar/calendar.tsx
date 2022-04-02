@@ -2,31 +2,27 @@ import React from "react";
 import dayjs from "dayjs";
 import styled from "styled-components";
 import { randomInt } from "crypto";
-import { useRouter } from 'next/router'
+import { useRouter } from "next/router";
+import { useSelector, useDispatch } from "react-redux";
+import { updateDate } from "@redux/actions";
+
+interface RootState {
+  selectedDate: string;
+}
 
 export default function Calendar(props) {
+  const router = useRouter();
 
-  const router = useRouter()
+  // Redux
+  const dispatch = useDispatch();
+  const state = useSelector((state: RootState) => state.selectedDate);
 
   // 📣 Filling & Init the Calendar
   //--------------------------------
 
   // init weekdays & Months
   const weekdaysArray = ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"];
-  const monthsArray = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
+  const monthsArray = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
   // Get date object - Dates in month - First day of month
   let date = dayjs(props.date).locale("fr");
   let daysInMonth = date.daysInMonth();
@@ -60,7 +56,14 @@ export default function Calendar(props) {
   // 📣 Interaction
   //--------------------------------
   function handleClickDayOfMonth(day, e) {
-    router.push('/[...slug]/date/[...date]', `/commits/${router.query.slug[0]}/${router.query.slug[1]}/${router.query.slug[2]}/date/${year}/${month}/${day}`)
+    router.push("/[...slug]/date/[...date]", `/commits/${router.query.slug[0]}/${router.query.slug[1]}/${router.query.slug[2]}/date/${year}/${month}/${day}`);
+    dispatch(
+      updateDate({
+        day: day,
+        month: month,
+        year: year,
+      })
+    );
   }
 
   // 📣 Rendering
@@ -73,7 +76,7 @@ export default function Calendar(props) {
           {weekdaysArray.map((day) => {
             return (
               <DayOfWeek>
-                <i key={day+randomInt} >{day}</i>
+                <i key={day + randomInt}>{day}</i>
               </DayOfWeek>
             );
           })}
@@ -82,7 +85,7 @@ export default function Calendar(props) {
           {calendar.map((day) => {
             return (
               <DayOfMonth onClick={(e) => handleClickDayOfMonth(day, e)}>
-                <i key={day+randomInt}>{day}</i>
+                <i key={day + randomInt}>{day}</i>
               </DayOfMonth>
             );
           })}

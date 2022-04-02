@@ -5,10 +5,20 @@ import styled from "styled-components";
 import YearCalendar from "@components/Calendar/YearCalendar";
 import { GitSt } from "@services/gitstory";
 import Loading from "@components/Loading/Loading";
+import { useSelector, useDispatch } from "react-redux";
+import { SelectedDateInterface, updateDate } from "@redux/actions";
+
+interface RootState {
+  selectedDate: SelectedDateInterface;
+}
 
 export default function Repo() {
   const router = useRouter();
   const slug = router.query.slug || [];
+
+  // Redux
+  const dispatch = useDispatch();
+  const state = useSelector((state: RootState) => state.selectedDate);
 
   // Get today's year
   const today = new Date();
@@ -18,7 +28,6 @@ export default function Repo() {
   // React State
   const [activeYears, setActiveYears] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [config, setConfig] = useState({});
 
   async function getActiveYears() {
     let active_years;
@@ -30,19 +39,23 @@ export default function Repo() {
       //router.push("/error/404");
       console.log("TODO: Redirect to 404");
       console.log(error);
-      
     }
     setActiveYears(active_years);
     setIsLoading(false);
+  }
+
+  function setCalendarYear(year: number) {
+    setYear(year);
+    let selectedDate = state;
+    dispatch(updateDate({ day: selectedDate.day, month: selectedDate.month, year: year }));
   }
 
   useEffect(() => {
     if (router.isReady) {
       getActiveYears();
     }
-  }, [isLoading,router.isReady]);
+  }, [isLoading, router.isReady]);
 
-  
   if (isLoading) {
     return (
       <>
@@ -53,7 +66,6 @@ export default function Repo() {
           </RepoBar>
           <Loading></Loading>
         </GradientHeader>
-        
       </>
     );
   } else {
@@ -70,12 +82,13 @@ export default function Repo() {
                 <b
                   key={year}
                   onClick={() => {
-                    setYear(year);
+                    setCalendarYear(year);
                   }}
                 >
                   {year}
                 </b>
-              );})}
+              );
+            })}
           </Years>
         </GradientHeader>
         <YearCalendar year={year}></YearCalendar>
@@ -83,9 +96,6 @@ export default function Repo() {
     );
   }
 }
-
-
-
 
 const GradientHeader = styled.div`
   height: 380px;
