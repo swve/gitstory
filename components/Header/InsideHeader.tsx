@@ -27,7 +27,7 @@ export default function InsideHeader({ withLeftPart = true, withPaddings = false
   return (
     <HeaderWrapper>
       <LeftWrapper></LeftWrapper>
-      <RightWrapper></RightWrapper>
+      <RightWrapper>Debug 🐞 {">"} Login - Status : Unavailable</RightWrapper>
     </HeaderWrapper>
   );
 }
