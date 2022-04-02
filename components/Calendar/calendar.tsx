@@ -4,10 +4,10 @@ import styled from "styled-components";
 import { randomInt } from "crypto";
 import { useRouter } from "next/router";
 import { useSelector, useDispatch } from "react-redux";
-import { updateDate } from "@redux/actions";
+import { SelectedDateInterface, updateDate } from "@redux/actions";
 
 interface RootState {
-  selectedDate: string;
+  selectedDate: SelectedDateInterface;
 }
 
 export default function Calendar(props) {
@@ -76,7 +76,7 @@ export default function Calendar(props) {
           {weekdaysArray.map((day) => {
             return (
               <DayOfWeek>
-                <i key={day + randomInt}>{day}</i>
+                <i key={day + randomInt}>{day} </i>
               </DayOfWeek>
             );
           })}
@@ -85,7 +85,9 @@ export default function Calendar(props) {
           {calendar.map((day) => {
             return (
               <DayOfMonth onClick={(e) => handleClickDayOfMonth(day, e)}>
-                <i key={day + randomInt}>{day}</i>
+                <i key={day + randomInt}>
+                  {day} {parseInt(day) == state.day && month == state.month && year == state.year ? "selected" : null}
+                </i>
               </DayOfMonth>
             );
           })}

@@ -20,9 +20,7 @@ export default function Repo() {
   const dispatch = useDispatch();
   const state = useSelector((state: RootState) => state.selectedDate);
 
-  // Get today's year
-  const today = new Date();
-  const currentYear = today.getFullYear();
+  const currentYear = state.year
   const [year, setYear] = useState(currentYear);
 
   // React State
@@ -46,8 +44,6 @@ export default function Repo() {
 
   function setCalendarYear(year: number) {
     setYear(year);
-    let selectedDate = state;
-    dispatch(updateDate({ day: selectedDate.day, month: selectedDate.month, year: year }));
   }
 
   useEffect(() => {
@@ -77,15 +73,15 @@ export default function Repo() {
             {slug[1]}/{slug[2]}
           </RepoBar>
           <Years>
-            {activeYears.map((year) => {
+            {activeYears.map((yearElement) => {
               return (
                 <b
-                  key={year}
+                  key={yearElement}
                   onClick={() => {
-                    setCalendarYear(year);
+                    setCalendarYear(yearElement);
                   }}
                 >
-                  {year}
+                  {yearElement} {year == yearElement ? "selected" : null}
                 </b>
               );
             })}
