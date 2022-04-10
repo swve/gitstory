@@ -22,7 +22,7 @@ const FooterWrapper = styled.div`
   margin: auto;
   justify-content: center;
   font-size: 12px;
-  margin-top: 10%;
+  margin-top: 8%;
 
   ul {
     margin: 0;

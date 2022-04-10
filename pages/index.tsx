@@ -5,9 +5,10 @@ import { useSelector, useDispatch } from "react-redux";
 import styled from "styled-components";
 import { useRouter } from "next/router";
 import { updateDate } from "@redux/actions";
-import InsideHeader from "@components/Header/InsideHeader";
+import InsideHeader from "@components/Header/Header";
 import KeyboardReturnIcon from '@mui/icons-material/KeyboardReturn';
 import Footer from "@components/Footer/Footer";
+import Header from "@components/Header/Header";
 
 interface RootState {
   selectedDate: string;
@@ -36,6 +37,7 @@ export default function Home() {
 
   return (
     <HomePage>
+      <Header withLeftPart={false} withPaddings={true}></Header>
       <LogoBox>
         {" "}
         <img src="/img/index_logo.png" width="250" height="70" />{" "}
@@ -64,7 +66,7 @@ const LogoBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 140px;
+  padding-top: 90px;
 `;
 
 const DescriptionBox = styled.div`
