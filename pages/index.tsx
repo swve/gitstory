@@ -7,6 +7,7 @@ import { useRouter } from "next/router";
 import { updateDate } from "@redux/actions";
 import InsideHeader from "@components/Header/InsideHeader";
 import KeyboardReturnIcon from '@mui/icons-material/KeyboardReturn';
+import Footer from "@components/Footer/Footer";
 
 interface RootState {
   selectedDate: string;
@@ -46,7 +47,7 @@ export default function Home() {
         <SearchBox  onKeyDown={keyPress} onChange={handleSearchTextChange} placeholder="Explore GitHub projects, e.g. : vercel/next.js"></SearchBox>
         <span>Press Enter/Return to search <KeyboardReturnIcon sx={{ fontSize: 10 }} /></span>
       </Search>
-      
+    <Footer></Footer>
     </HomePage>
   );
 }

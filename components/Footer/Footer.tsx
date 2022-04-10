@@ -6,9 +6,9 @@ export default function Footer() {
     <FooterWrapper>
       © 2022 Sweave &nbsp;&nbsp;⏤{" "}
       <ul>
-        <li> About</li>
+        <li>About</li>
         <li>Privacy</li>
-        <li>Pizza</li>
+        <li>Kit</li>
         <li>Contribute</li>
       </ul>
     </FooterWrapper>
@@ -17,12 +17,12 @@ export default function Footer() {
 
 const FooterWrapper = styled.div`
   position: relative;
-  bottom: -85vh;
-  padding-left: 130px;
   font-size: 14px;
   display: flex;
   margin: auto;
-  text-align: center;
+  justify-content: center;
+  font-size: 12px;
+  margin-top: 10%;
 
   ul {
     margin: 0;
