@@ -41,3 +41,9 @@ yarn-error.log*
 .Trashes
 .fseventsd
 .Spotlight-V100
+
+# Node.js env files
+.env
+.env.development
+.env.test
+.env.production

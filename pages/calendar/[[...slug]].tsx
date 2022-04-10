@@ -20,7 +20,7 @@ export default function Repo() {
   const dispatch = useDispatch();
   const state = useSelector((state: RootState) => state.selectedDate);
 
-  const currentYear = state.year
+  const currentYear = state.year;
   const [year, setYear] = useState(currentYear);
 
   // React State
@@ -31,7 +31,11 @@ export default function Repo() {
     let active_years;
     try {
       const GitStory = new GitSt();
-      GitStory.init({ client: "github", owner: slug[1], repo: slug[2], sha: "master" });
+      GitStory.init({
+        client: "github",
+        owner: slug[1],
+        repo: slug[2],
+      });
       active_years = await GitStory.yearsActive();
     } catch (error) {
       //router.push("/error/404");
