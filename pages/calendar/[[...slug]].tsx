@@ -102,8 +102,8 @@ const GradientHeader = styled.div`
   padding-left: 130px;
   padding-right: 130px;
   padding-top: 30px;
-
-  background: linear-gradient(180deg, #13161a 0%, rgba(39, 49, 55, 0.52) 100%), linear-gradient(243.33deg, #280b7d 5.62%, #245aaa 74.42%, #0dd1dd 127.92%);
+  background: linear-gradient(180deg, #09090A 0%, rgba(39, 49, 55, 0.52) 100%), linear-gradient(228.87deg, rgba(69, 80, 174, 0.54) 9.05%, rgba(227, 9, 88, 0.27) 51.25%, rgba(255, 255, 255, 0) 84.11%), linear-gradient(243.33deg, #4C15EB 5.62%, #245AAA 36.13%, rgba(221, 50, 13, 0.71) 127.92%);
+  //background: linear-gradient(180deg, #13161a 0%, rgba(39, 49, 55, 0.52) 100%), linear-gradient(243.33deg, #280b7d 5.62%, #245aaa 74.42%, #0dd1dd 127.92%);
 `;
 
 const RepoBar = styled.div`
