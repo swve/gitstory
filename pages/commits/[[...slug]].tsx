@@ -18,11 +18,10 @@ export default function Repo() {
     let commits;
     try {
       const GitStory = new GitSt();
-      GitStory.init({ client: "github", owner: slug[1], repo: slug[2], sha: "master" });
+      GitStory.init({ client: "github", owner: slug[1], repo: slug[2] });
       let firsthour = dayjs(selectDate).startOf("day").format("YYYY-MM-DDTHH:mm:ssZ");
       let lasthour = dayjs(selectDate).endOf("day").format("YYYY-MM-DDTHH:mm:ssZ");
       commits = await GitStory.getCommitsBetween(firsthour, lasthour, 100, page);
-      console.log(commits.data);
       setDateCommits(commits.data);
     } catch (error) {
       console.log("TODO: Redirect to 404");

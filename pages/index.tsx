@@ -5,6 +5,8 @@ import { useSelector, useDispatch } from "react-redux";
 import styled from "styled-components";
 import { useRouter } from "next/router";
 import { updateDate } from "@redux/actions";
+import InsideHeader from "@components/Header/InsideHeader";
+import { checkGitHubToken } from "@services/github";
 
 interface RootState {
   selectedDate: string;
@@ -18,8 +20,6 @@ export default function Home() {
   const slug = router.query.slug || [];
   // get date in iso format
 
-  const TestDate = new Date("2020-01-01");
-  console.log(state);
 
   const handleSearchTextChange = (e) => {
     let value = e.target.value;
@@ -27,22 +27,16 @@ export default function Home() {
     setSearchValue(parsedValues);
   };
 
+  async function testCheck() {
+    await checkGitHubToken();
+  }
+
+  
+
   return (
     <HomePage>
-      {state ? <h1>Testing page </h1> : <h1>Test2 </h1>}
-      <button
-        onClick={() => {
-          dispatch(
-            updateDate({
-              day: 11,
-              month: 11,
-              year: 1,
-            })
-          );
-        }}
-      >
-        debug redux button
-      </button>
+      <InsideHeader></InsideHeader>
+      
     </HomePage>
   );
 }
