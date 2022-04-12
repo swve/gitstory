@@ -85,9 +85,9 @@ export default function Calendar(props) {
           {calendar.map((day) => {
             return (
               <DayOfMonth onClick={(e) => handleClickDayOfMonth(day, e)}>
-                <i key={day + randomInt}>
-                  {day} {parseInt(day) == state.day && month == state.month && year == state.year ? "selected" : null}
-                </i>
+                <DayBox key={day + randomInt} selected={parseInt(day) == state.day && month == state.month && year == state.year ? "selected" : null}>
+                  {day}
+                </DayBox>
               </DayOfMonth>
             );
           })}
@@ -183,3 +183,20 @@ const CalendarBox = styled.div`
     opacity: 0.9;
   }
 `;
+
+// CSS
+const DayBox: any = styled.div`
+  background-color: ${(props: any) => (props.selected ? "white" : null)};
+  color: ${(props: any) => (props.selected ? "black" : "white")};
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.2s;
+
+  &:hover {
+    background-color: ${(props: any) => (props.selected ? "white" : "#101417")};
+    color: ${(props: any) => (props.selected ? "black" : "white")};
+  }
+`;
+
+

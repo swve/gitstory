@@ -32,7 +32,7 @@ export default function YearCalendar({ withRelativeTop = false, year }) {
 // 📣 Styling
 //--------------------------------
 const YearCalendarBox = styled.div`
-  top: -200px;
+  top: -150px;
   position: relative;
   display: flex;
   flex-direction: row;

@@ -40,7 +40,7 @@ export default function Home() {
       <Header withLeftPart={false} withPaddings={true}></Header>
       <LogoBox>
         {" "}
-        <img src="/img/index_logo.png" width="250" height="70" />{" "}
+        <img src="/img/index_logo.png"  height="70" />{" "}
       </LogoBox>
       <DescriptionBox>
         <img alt="Internet's git time machine" src="/img/description.png" />
