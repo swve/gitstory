@@ -7,6 +7,7 @@ import { GitSt } from "@services/gitstory";
 import Loading from "@components/Loading/Loading";
 import { useSelector, useDispatch } from "react-redux";
 import { SelectedDateInterface, updateDate } from "@redux/actions";
+import CircularProgress from "@mui/material/CircularProgress";
 
 interface RootState {
   selectedDate: SelectedDateInterface;
@@ -62,9 +63,8 @@ export default function Repo() {
         <GradientHeader>
           <Header></Header>
           <RepoBar>
-            {slug[1]}/{slug[2]}
+            {slug[1]}/{slug[2]} <CircularProgress style={{ color: "white" }} size={30} thickness={6} />
           </RepoBar>
-          <Loading></Loading>
         </GradientHeader>
       </>
     );
@@ -81,7 +81,7 @@ export default function Repo() {
               return (
                 <>
                   <YearBox
-                    key={yearElement}
+                    key={yearElement + "-" + Math.random()}
                     onClick={() => {
                       setCalendarYear(yearElement);
                     }}
@@ -120,13 +120,12 @@ const RepoBar = styled.div`
 
 const Years = styled.div`
   padding-top: 30px;
-  
 `;
 
 const YearBox: any = styled.b`
   background-color: ${(props: any) => (props.selected ? "white" : null)};
   color: ${(props: any) => (props.selected ? "black" : "white")};
-  
+
   cursor: pointer;
   transition: 0.2s;
   margin-left: 10px;

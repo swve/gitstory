@@ -11,14 +11,13 @@ import LogoutIcon from "@mui/icons-material/Logout";
 export default function Header({ withLeftPart = true, withPaddings = false }) {
   const { data: session } = useSession();
 
-  const [searchValue, setSearchValue] = useState([]);
+  const [headerSearchValue, setHeaderSearchValue] = useState([]);
   const router = useRouter();
   const slug = router.query.slug || [];
 
-  const handleSearchTextChange = (e) => {
-    let value = e.target.value;
-    let parsedValues = value.split("/");
-    setSearchValue(parsedValues);
+  const handleHeaderSearchTextChange = (e) => {
+    let parsedValues = e.target.value.split("/");
+    setHeaderSearchValue(parsedValues);
   };
 
   async function saveGitHubSessionToCookie() {
@@ -28,7 +27,7 @@ export default function Header({ withLeftPart = true, withPaddings = false }) {
 
   const keyPress = (e) => {
     if (e.keyCode == 13) {
-      router.push("/calendar/github/" + searchValue[0] + "/" + searchValue[1]);
+      router.push("/calendar/github/" + headerSearchValue[0] + "/" + headerSearchValue[1]);
     }
   };
 
@@ -36,24 +35,6 @@ export default function Header({ withLeftPart = true, withPaddings = false }) {
     router.push("/");
   };
 
-  // CSS
-  const HeaderWrapper = styled.div`
-    display: flex;
-    justify-content: space-between;
-    padding-left: ${withPaddings === true ? 130 : 0}px;
-    padding-right: ${withPaddings === true ? 130 : 0}px;
-    padding-top: ${withPaddings === true ? 30 : 0}px;
-  `;
-
-  const LeftWrapper = styled.div`
-    opacity: ${withLeftPart === true ? 1 : 0};
-    display: flex;
-    img {
-      cursor: pointer;
-      justify-self: center;
-      margin-top: 5px;
-    }
-  `;
 
   // Execute functions
   saveGitHubSessionToCookie();
@@ -82,10 +63,14 @@ export default function Header({ withLeftPart = true, withPaddings = false }) {
   };
 
   return (
-    <HeaderWrapper>
-      <LeftWrapper>
+    <HeaderWrapper withPaddings={withPaddings}>
+      <LeftWrapper withLeftPart={withLeftPart}>
         <img onClick={goHome} src="/img/index_logo.png" width="120" height="34" />
-        <SearchBoxHeader onKeyDown={keyPress} onChange={handleSearchTextChange} placeholder="Explore GitHub projects, e.g. : vercel/next.js"></SearchBoxHeader>
+        <SearchBoxHeader
+          onKeyDown={keyPress}
+          onChange={handleHeaderSearchTextChange}
+          placeholder="Explore GitHub projects, e.g. : vercel/next.js"
+        ></SearchBoxHeader>
       </LeftWrapper>
       <RightWrapper>
         <ProfileBox></ProfileBox>
@@ -144,3 +129,21 @@ const SessionWrapper = styled.div`
   }
 `;
 const RightWrapper = styled.div``;
+// CSS
+const HeaderWrapper :any = styled.div`
+display: flex;
+justify-content: space-between;
+padding-left: ${(props: any) => (props.withPaddings === true ? 130 : 0)}px;
+padding-right: ${(props: any) => (props.withPaddings  === true ? 130 : 0)}px;
+padding-top: ${(props: any) => (props.withPaddings  === true ? 30 : 0)}px;
+`;
+
+const LeftWrapper :any  = styled.div`
+opacity: ${(props: any) => (props.withLeftPart  === true ? 1 : 0)};
+display: flex;
+img {
+  cursor: pointer;
+  justify-self: center;
+  margin-top: 5px;
+}
+`;

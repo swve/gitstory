@@ -10,17 +10,10 @@ import KeyboardReturnIcon from '@mui/icons-material/KeyboardReturn';
 import Footer from "@components/Footer/Footer";
 import Header from "@components/Header/Header";
 
-interface RootState {
-  selectedDate: string;
-}
 
 export default function Home() {
   const [searchValue, setSearchValue] = useState([]);
-  const state = useSelector((state: RootState) => state.selectedDate);
   const router = useRouter();
-  const dispatch = useDispatch();
-  const slug = router.query.slug || [];
-  // get date in iso format
 
   const handleSearchTextChange = (e) => {
     let value = e.target.value;

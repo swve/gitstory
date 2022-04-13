@@ -23,7 +23,7 @@ export default function YearCalendar({ withRelativeTop = false, year }) {
   return (
     <YearCalendarBox>
       {year_dates.map((date) => {
-        return <Calendar key={date + randomInt} date={date} />;
+        return <Calendar key={date + Math.random()} date={date} />;
       })}
     </YearCalendarBox>
   );
