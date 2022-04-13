@@ -6,10 +6,9 @@ import styled from "styled-components";
 import { useRouter } from "next/router";
 import { updateDate } from "@redux/actions";
 import InsideHeader from "@components/Header/Header";
-import KeyboardReturnIcon from '@mui/icons-material/KeyboardReturn';
+import KeyboardReturnIcon from "@mui/icons-material/KeyboardReturn";
 import Footer from "@components/Footer/Footer";
 import Header from "@components/Header/Header";
-
 
 export default function Home() {
   const [searchValue, setSearchValue] = useState([]);
@@ -33,16 +32,18 @@ export default function Home() {
       <Header withLeftPart={false} withPaddings={true}></Header>
       <LogoBox>
         {" "}
-        <img src="/img/index_logo.png"  height="70" />{" "}
+        <img src="/img/index_logo.png" height="70" />{" "}
       </LogoBox>
       <DescriptionBox>
         <img alt="Internet's git time machine" src="/img/description.png" />
       </DescriptionBox>
       <Search>
-        <SearchBox  onKeyDown={keyPress} onChange={handleSearchTextChange} placeholder="Explore GitHub projects, e.g. : vercel/next.js"></SearchBox>
-        <span>Press Enter/Return to search <KeyboardReturnIcon sx={{ fontSize: 10 }} /></span>
+        <SearchBox onKeyDown={keyPress} onChange={handleSearchTextChange} placeholder="Explore GitHub projects, e.g. : vercel/next.js"></SearchBox>
+        <span>
+          Press Enter/Return to search <KeyboardReturnIcon sx={{ fontSize: 10 }} />
+        </span>
       </Search>
-    <Footer></Footer>
+      <Footer></Footer>
     </HomePage>
   );
 }
@@ -90,16 +91,29 @@ const Search = styled.div`
 `;
 
 const SearchBox = styled.input`
-    width: 550px;
-    height: 41px;
-    background: linear-gradient(0deg,rgba(0,0,0,0.37),rgba(0,0,0,0.37));
-    border: 1px solid rgb(255 255 255 / 0%);
-    box-sizing: border-box;
-    border-radius: 7px;
-    margin-top: 40px;
-    padding-left: 16px;
-    font-size: 17px;
-    color: white;
+  width: 550px;
+  height: 41px;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.37), rgba(0, 0, 0, 0.37));
+  border: 1px solid rgb(255 255 255 / 0%);
+  box-sizing: border-box;
+  border-radius: 7px;
+  margin-top: 40px;
+  padding-left: 16px;
+  font-size: 17px;
+  color: white;
+  transition: all 0.3s ease-in-out;
+
+  &:focus {
+    outline: none;
+    width: 700px;
+    font-size: 16px;
+
     ::placeholder {
-      color: rgba(255, 255, 255, 0.13);;
-    }`;
+    color: rgba(255, 255, 255, 0.33);
+  }
+  }
+
+  ::placeholder {
+    color: rgba(255, 255, 255, 0.13);
+  }
+`;

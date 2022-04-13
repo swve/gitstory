@@ -8,6 +8,7 @@ import Loading from "@components/Loading/Loading";
 import { useSelector, useDispatch } from "react-redux";
 import { SelectedDateInterface, updateDate } from "@redux/actions";
 import CircularProgress from "@mui/material/CircularProgress";
+import FancyRender from "@components/Loading/FancyRender";
 
 interface RootState {
   selectedDate: SelectedDateInterface;
@@ -76,24 +77,24 @@ export default function Repo() {
           <RepoBar>
             {slug[1]}/{slug[2]}
           </RepoBar>
-          <Years>
-            {activeYears.map((yearElement) => {
-              return (
-                <>
-                  <YearBox
-                    key={yearElement + "-" + Math.random()}
-                    onClick={() => {
-                      setCalendarYear(yearElement);
-                    }}
-                    selected={year == yearElement ? true : false}
-                  >
-                    {" "}
-                    {yearElement}
-                  </YearBox>
-                </>
-              );
-            })}
-          </Years>
+            <Years>
+              {activeYears.map((yearElement) => {
+                return (
+                  <>
+                    <YearBox
+                      key={yearElement + "-" + Math.random()}
+                      onClick={() => {
+                        setCalendarYear(yearElement);
+                      }}
+                      selected={year == yearElement ? true : false}
+                    >
+                      {" "}
+                      {yearElement}
+                    </YearBox>
+                  </>
+                );
+              })}
+            </Years>
         </GradientHeader>
         <YearCalendar year={year}></YearCalendar>
       </>

@@ -35,8 +35,10 @@ export default function Repo() {
 
       // Get Date
       if (slug[3] === "date") {
+        setIsLoading(true);
         let date = new Date(parseInt(slug[4]), parseInt(slug[5]) - 1, parseInt(slug[6]));
         getDayCommits(date, 0);
+        setIsLoading(false);
       } else {
         alert("error");
       }

@@ -88,10 +88,16 @@ const SearchBoxHeader = styled.input`
   padding-left: 16px;
   font-size: 14px;
   margin-left: 20px;
-  width: 700px;
+  width: 600px;
   height: 40px;
   color: white;
+  transition: all 0.3s ease-in-out;
 
+  &:focus {
+    outline: none;
+    width: 700px;
+    font-size: 16px;
+  }
   ::placeholder {
     color: rgba(255, 255, 255, 0.13);
   }
