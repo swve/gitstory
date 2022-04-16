@@ -9,6 +9,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { SelectedDateInterface, updateDate } from "@redux/actions";
 import CircularProgress from "@mui/material/CircularProgress";
 import FancyRender from "@components/Loading/FancyRender";
+import Footer from "@components/Footer/Footer";
 
 interface RootState {
   selectedDate: SelectedDateInterface;
@@ -56,7 +57,7 @@ export default function Repo() {
     if (router.isReady) {
       getActiveYears();
     }
-  }, [isLoading, router.isReady]);
+  }, [isLoading, router.query, router.isReady]);
 
   if (isLoading) {
     return (
@@ -97,6 +98,7 @@ export default function Repo() {
             </Years>
         </GradientHeader>
         <YearCalendar year={year}></YearCalendar>
+        <Footer></Footer>
       </>
     );
   }
@@ -129,8 +131,9 @@ const YearBox: any = styled.b`
 
   cursor: pointer;
   transition: 0.2s;
-  margin-left: 10px;
-  padding: 7px;
+  margin-right: 10px;
+  padding: 8px;
+  
   border-radius: 5px;
 
   &:hover {

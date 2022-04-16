@@ -43,7 +43,7 @@ export default function Home() {
           Press Enter/Return to search <KeyboardReturnIcon sx={{ fontSize: 10 }} />
         </span>
       </Search>
-      <Footer></Footer>
+      <Footer home={true}></Footer>
     </HomePage>
   );
 }
