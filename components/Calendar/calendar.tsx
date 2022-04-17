@@ -5,6 +5,7 @@ import { randomInt } from "crypto";
 import { useRouter } from "next/router";
 import { useSelector, useDispatch } from "react-redux";
 import { SelectedDateInterface, updateDate } from "@redux/actions";
+import { Divider, Tooltip } from "@mui/material";
 
 interface RootState {
   selectedDate: SelectedDateInterface;
@@ -71,7 +72,9 @@ export default function Calendar(props) {
   function renderCalendar() {
     return (
       <CalendarBox>
-        <h2>{monthsArray[month - 1]}</h2>
+        <Tooltip title={"Check "+ monthsArray[month - 1] + " commits "}><MonthBox>
+          {monthsArray[month - 1]}
+        </MonthBox></Tooltip>
         <HeadDaysOfTheWeek>
           {weekdaysArray.map((day) => {
             return (
@@ -103,6 +106,27 @@ export default function Calendar(props) {
 
 // 📣 Styling
 //--------------------------------
+
+const MonthBox = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff14;
+  padding: 10px;
+  border-radius: 5px;
+  transition:  0.7s;
+
+  &:hover {
+    background-color: #363167;
+    cursor: pointer;
+  }
+
+  h2 {
+    margin-right: 6px;
+  }
+`;
+
+const ScanButton = styled.div``;
 const HeadDaysOfTheWeek = styled.div`
   display: flex;
   li {
@@ -198,5 +222,3 @@ const DayBox: any = styled.div`
     color: ${(props: any) => (props.selected ? "black" : "white")};
   }
 `;
-
-

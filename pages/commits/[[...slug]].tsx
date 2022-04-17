@@ -5,11 +5,13 @@ import styled from "styled-components";
 import { GitSt } from "@services/gitstory";
 import dayjs from "dayjs";
 import Loading from "@components/Loading/Loading";
-import CommitIcon from '@mui/icons-material/Commit';
+import CommitIcon from "@mui/icons-material/Commit";
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
-import AccessTimeFilledIcon from '@mui/icons-material/AccessTimeFilled';
+import AccessTimeFilledIcon from "@mui/icons-material/AccessTimeFilled";
 import Tooltip from "@mui/material/Tooltip";
+import InfoIcon from "@mui/icons-material/Info";
 import FancyRender from "@components/Loading/FancyRender";
+import NumbersIcon from '@mui/icons-material/Numbers';
 import Footer from "@components/Footer/Footer";
 
 export default function Repo() {
@@ -66,15 +68,22 @@ export default function Repo() {
         <GradientHeader>
           <Header></Header>
           <RepoBar>
+            {" "}
             {slug[1]}/{slug[2]}
           </RepoBar>
-          <BackToCalendarBtn>
-            <a href={`/calendar/${slug[0]}/${slug[1]}/${slug[2]}`}>
-              <Tooltip title="Back to Calendar">
-                <KeyboardBackspaceIcon sx={{ fontSize: "20px" }} />
-              </Tooltip>
-            </a>
-          </BackToCalendarBtn>
+          <SubRepoInfo>
+            <BackToCalendarBtn>
+              <a href={`/calendar/${slug[0]}/${slug[1]}/${slug[2]}`}>
+                <Tooltip title="Back to Calendar">
+                  <KeyboardBackspaceIcon sx={{ fontSize: "20px" }} />
+                </Tooltip>
+              </a>
+            </BackToCalendarBtn>
+            <span>
+             <InfoIcon sx={{fontSize:"13px"}}></InfoIcon>  Commits on {dayjs(slug[4] + "-" + slug[5] + "-" + slug[6]).format("DD MMMM YYYY")}
+            </span>
+            <div><NumbersIcon sx={{fontSize:"13px"}}></NumbersIcon> {dateCommits.length} Commits</div>
+          </SubRepoInfo>
         </GradientHeader>
         <ListOfCommitsBox>
           <ul>
@@ -93,15 +102,15 @@ export default function Repo() {
                     </CommitLeftGlobal>
                     <CommitRightGlobal>
                       <a target="_blank" href={commit.html_url}>
-                      <Tooltip title="See commit in detail, in GitHub">
-                        <CommitIcon sx={{ fontSize: 30 }} />
-                       </Tooltip>
+                        <Tooltip title="See commit in detail, in GitHub">
+                          <CommitIcon sx={{ fontSize: 30 }} />
+                        </Tooltip>
                       </a>
                       {console.log(commit)}
                       <a target="_blank" href={`https://github.com/${slug[1]}/${slug[2]}/tree/${commit.sha}/`}>
-                      <Tooltip title="Travel in time to that commit, in GitHub">
-                        <AccessTimeFilledIcon sx={{ fontSize: 30 }} />
-                       </Tooltip>
+                        <Tooltip title="Travel in time to that commit, in GitHub">
+                          <AccessTimeFilledIcon sx={{ fontSize: 30 }} />
+                        </Tooltip>
                       </a>
                     </CommitRightGlobal>
                   </CommitBox>
@@ -116,16 +125,6 @@ export default function Repo() {
     );
   }
 }
-
-const BackToCalendarBtn = styled.button`
-  background-color: #171d21e6;
-  color: white;
-  border: none;
-  padding: 8px;
-  margin-top: 10px;
-  border-radius: 7px;
-  box-shadow: 0 9px 11px 2px rgb(3 8 19 / 20%);
-`;
 
 const ListOfCommitsBox = styled.div`
   background-color: #171d21e6;
@@ -173,6 +172,30 @@ const RepoBar = styled.div`
   font-weight: bold;
 `;
 
+const BackToCalendarBtn = styled.button`
+  background-color: #171d21e6;
+  color: white;
+  border: none;
+  padding: 8px;
+  height: 36px;
+  margin-top: 10px;
+  border-radius: 7px;
+  box-shadow: 0 9px 11px 2px rgb(3 8 19 / 20%);
+`;
+
+const SubRepoInfo = styled.div`
+  display: flex;
+  justify-content: space-between;
+
+  span {
+    padding: 18px;
+  }
+
+  div{
+    padding: 18px;
+  }
+`;
+
 // Commit Box Design
 const CommitBox = styled.li`
   list-style: none;
@@ -195,14 +218,13 @@ const CommitLeftGlobal = styled.div``;
 const CommitRightGlobal = styled.div`
   margin-right: 30px;
 
-  a{
+  a {
     margin-left: 20px;
   }
 `;
 const CommitLeftTopInfo = styled.div`
   font-size: 19px;
   font-weight: bold;
-
 `;
 const CommitLeftSubInfo = styled.div`
   margin-top: 5px;
