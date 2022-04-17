@@ -5,6 +5,7 @@ import { randomInt } from "crypto";
 import { useRouter } from "next/router";
 import { useSelector, useDispatch } from "react-redux";
 import { SelectedDateInterface, updateDate } from "@redux/actions";
+import { Divider, Tooltip } from "@mui/material";
 
 interface RootState {
   selectedDate: SelectedDateInterface;
@@ -71,7 +72,9 @@ export default function Calendar(props) {
   function renderCalendar() {
     return (
       <CalendarBox>
-        <h2>{monthsArray[month - 1]}</h2>
+        <Tooltip title={"Check "+ monthsArray[month - 1] + " commits "}><MonthBox>
+          {monthsArray[month - 1]}
+        </MonthBox></Tooltip>
         <HeadDaysOfTheWeek>
           {weekdaysArray.map((day) => {
             return (
@@ -85,9 +88,9 @@ export default function Calendar(props) {
           {calendar.map((day) => {
             return (
               <DayOfMonth onClick={(e) => handleClickDayOfMonth(day, e)}>
-                <i key={day + randomInt}>
-                  {day} {parseInt(day) == state.day && month == state.month && year == state.year ? "selected" : null}
-                </i>
+                <DayBox key={day + randomInt} selected={parseInt(day) == state.day && month == state.month && year == state.year ? "selected" : null}>
+                  {day}
+                </DayBox>
               </DayOfMonth>
             );
           })}
@@ -103,6 +106,27 @@ export default function Calendar(props) {
 
 // 📣 Styling
 //--------------------------------
+
+const MonthBox = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff14;
+  padding: 10px;
+  border-radius: 5px;
+  transition:  0.7s;
+
+  &:hover {
+    background-color: #363167;
+    cursor: pointer;
+  }
+
+  h2 {
+    margin-right: 6px;
+  }
+`;
+
+const ScanButton = styled.div``;
 const HeadDaysOfTheWeek = styled.div`
   display: flex;
   li {
@@ -181,5 +205,20 @@ const CalendarBox = styled.div`
     text-align: center;
     font-size: 15px;
     opacity: 0.9;
+  }
+`;
+
+// CSS
+const DayBox: any = styled.div`
+  background-color: ${(props: any) => (props.selected ? "white" : null)};
+  color: ${(props: any) => (props.selected ? "black" : "white")};
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.2s;
+
+  &:hover {
+    background-color: ${(props: any) => (props.selected ? "white" : "#101417")};
+    color: ${(props: any) => (props.selected ? "black" : "white")};
   }
 `;

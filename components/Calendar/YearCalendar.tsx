@@ -2,6 +2,7 @@ import React from "react";
 import Calendar from "@components/Calendar/Calendar";
 import styled from "styled-components";
 import { randomInt } from "crypto";
+import FancyRender from "@components/Loading/FancyRender";
 
 export default function YearCalendar({ withRelativeTop = false, year }) {
   // 📣 Filling & Init the YearCalendar
@@ -21,18 +22,20 @@ export default function YearCalendar({ withRelativeTop = false, year }) {
   // 📣 Final Rendering
   //--------------------------------
   return (
-    <YearCalendarBox>
-      {year_dates.map((date) => {
-        return <Calendar key={date + randomInt} date={date} />;
-      })}
-    </YearCalendarBox>
+    <FancyRender >
+      <YearCalendarBox>
+        {year_dates.map((date) => {
+          return <Calendar key={date + Math.random()} date={date} />;
+        })}
+      </YearCalendarBox>
+    </FancyRender>
   );
 }
 
 // 📣 Styling
 //--------------------------------
 const YearCalendarBox = styled.div`
-  top: -200px;
+  top: -150px;
   position: relative;
   display: flex;
   flex-direction: row;
