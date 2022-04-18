@@ -1,5 +1,6 @@
 import Header from "@components/Header/Header";
 import { useRouter } from "next/router";
+import Link from 'next/link';
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { GitSt } from "@services/gitstory";
@@ -11,7 +12,7 @@ import AccessTimeFilledIcon from "@mui/icons-material/AccessTimeFilled";
 import Tooltip from "@mui/material/Tooltip";
 import InfoIcon from "@mui/icons-material/Info";
 import FancyRender from "@components/Loading/FancyRender";
-import NumbersIcon from '@mui/icons-material/Numbers';
+import NumbersIcon from "@mui/icons-material/Numbers";
 import Footer from "@components/Footer/Footer";
 
 export default function Repo() {
@@ -73,16 +74,20 @@ export default function Repo() {
           </RepoBar>
           <SubRepoInfo>
             <BackToCalendarBtn>
-              <a href={`/calendar/${slug[0]}/${slug[1]}/${slug[2]}`}>
-                <Tooltip title="Back to Calendar">
-                  <KeyboardBackspaceIcon sx={{ fontSize: "20px" }} />
-                </Tooltip>
-              </a>
+              <Link href={`/calendar/${slug[0]}/${slug[1]}/${slug[2]}`}>
+                <a>
+                  <Tooltip title="Back to Calendar">
+                    <KeyboardBackspaceIcon sx={{ fontSize: "20px" }} />
+                  </Tooltip>
+                </a>
+              </Link>
             </BackToCalendarBtn>
             <span>
-             <InfoIcon sx={{fontSize:"13px"}}></InfoIcon>  Commits on {dayjs(slug[4] + "-" + slug[5] + "-" + slug[6]).format("DD MMMM YYYY")}
+              <InfoIcon sx={{ fontSize: "13px" }}></InfoIcon> Commits on {dayjs(slug[4] + "-" + slug[5] + "-" + slug[6]).format("DD MMMM YYYY")}
             </span>
-            <div><NumbersIcon sx={{fontSize:"13px"}}></NumbersIcon> {dateCommits.length} Commits</div>
+            <div>
+              <NumbersIcon sx={{ fontSize: "13px" }}></NumbersIcon> {dateCommits.length} Commits
+            </div>
           </SubRepoInfo>
         </GradientHeader>
         <ListOfCommitsBox>
@@ -191,7 +196,7 @@ const SubRepoInfo = styled.div`
     padding: 18px;
   }
 
-  div{
+  div {
     padding: 18px;
   }
 `;

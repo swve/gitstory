@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import dayjs from "dayjs";
 import styled from "styled-components";
 import { randomInt } from "crypto";
@@ -6,6 +6,9 @@ import { useRouter } from "next/router";
 import { useSelector, useDispatch } from "react-redux";
 import { SelectedDateInterface, updateDate } from "@redux/actions";
 import { Divider, Tooltip } from "@mui/material";
+import { GitSt } from "@services/gitstory";
+import CircularProgress from "@mui/material/CircularProgress";
+import Link from "next/link";
 
 interface RootState {
   selectedDate: SelectedDateInterface;
@@ -13,6 +16,12 @@ interface RootState {
 
 export default function Calendar(props) {
   const router = useRouter();
+  const [calendarState, setCalendarState] = useState([]);
+  const [monthActivityState, setMonthActivityState] = useState<any>({});
+  const [isLoading, setIsLoading] = useState(true);
+  const [isScanOn, setIsScanOn] = useState(false);
+  const GitStory = new GitSt();
+  GitStory.init({ client: "github", owner: router.query.slug[1], repo: router.query.slug[2] });
 
   // Redux
   const dispatch = useDispatch();
@@ -31,15 +40,10 @@ export default function Calendar(props) {
   const month = date.month() + 1;
   const year = date.year();
 
-  // Init array calendar
-  let calendar = [];
-
-  // Execute Calendar function
-  fillCalendar();
-
   // Fill Calendar in Array
   function fillCalendar() {
     let counter = true;
+    let calendar = [];
     weekdaysArray.forEach((day) => {
       if (counter === true) {
         if (String(day) === String(firstDayOfMonth)) {
@@ -52,12 +56,31 @@ export default function Calendar(props) {
         }
       }
     });
+    setCalendarState(calendar);
+    isScanOn ? null : setIsLoading(false);
   }
+
+  //
+  async function scanMonth(month, year) {
+    setIsScanOn(true);
+    setIsLoading(true);
+    let activity = await GitStory.getMonthCommitsActivity(year, month);
+    setMonthActivityState(activity);
+    console.log(activity);
+
+    setIsScanOn(false);
+    setIsLoading(false);
+  }
+
+  useEffect(() => {
+    fillCalendar();
+  }, [isLoading]);
 
   // 📣 Interaction
   //--------------------------------
   function handleClickDayOfMonth(day, e) {
     router.push("/[...slug]/date/[...date]", `/commits/${router.query.slug[0]}/${router.query.slug[1]}/${router.query.slug[2]}/date/${year}/${month}/${day}`);
+    e.preventDefault();
     dispatch(
       updateDate({
         day: day,
@@ -70,33 +93,80 @@ export default function Calendar(props) {
   // 📣 Rendering
   //--------------------------------
   function renderCalendar() {
-    return (
-      <CalendarBox>
-        <Tooltip title={"Check "+ monthsArray[month - 1] + " commits "}><MonthBox>
-          {monthsArray[month - 1]}
-        </MonthBox></Tooltip>
-        <HeadDaysOfTheWeek>
-          {weekdaysArray.map((day) => {
-            return (
-              <DayOfWeek>
-                <i key={day + randomInt}>{day} </i>
-              </DayOfWeek>
-            );
-          })}
-        </HeadDaysOfTheWeek>
-        <DaysOfTheMonth>
-          {calendar.map((day) => {
-            return (
-              <DayOfMonth onClick={(e) => handleClickDayOfMonth(day, e)}>
-                <DayBox key={day + randomInt} selected={parseInt(day) == state.day && month == state.month && year == state.year ? "selected" : null}>
-                  {day}
-                </DayBox>
-              </DayOfMonth>
-            );
-          })}
-        </DaysOfTheMonth>
-      </CalendarBox>
-    );
+    if (isLoading) {
+      return (
+        <CalendarBox>
+          <Tooltip title={"Check " + monthsArray[month - 1] + " commits activity "}>
+            <MonthBox
+              onClick={() => {
+                scanMonth(month, year);
+              }}
+            >
+              {monthsArray[month - 1]}
+            </MonthBox>
+          </Tooltip>
+          <HeadDaysOfTheWeek>
+            {weekdaysArray.map((day) => {
+              return (
+                <DayOfWeek>
+                  <i key={day + randomInt}>{day} </i>
+                </DayOfWeek>
+              );
+            })}
+          </HeadDaysOfTheWeek>
+          <LoadingPanel>
+            <CircularProgress style={{ color: "white" }} size={90} thickness={6} />
+            <h5>Searching for commits... this may take minutes</h5>
+          </LoadingPanel>
+        </CalendarBox>
+      );
+    } else {
+      return (
+        <CalendarBox>
+          <Tooltip
+            id={monthsArray[month - 1]}
+            arrow
+            enterDelay={800}
+            placement="top"
+            title={"🔬 Experimental: Check " + monthsArray[month - 1] + " commits activity  "}
+          >
+            <MonthBox
+              onClick={() => {
+                scanMonth(month, year);
+              }}
+            >
+              {monthsArray[month - 1]}
+            </MonthBox>
+          </Tooltip>
+          <HeadDaysOfTheWeek>
+            {weekdaysArray.map((day) => {
+              return (
+                <DayOfWeek>
+                  <i key={day + randomInt}>{day} </i>
+                </DayOfWeek>
+              );
+            })}
+          </HeadDaysOfTheWeek>
+          <DaysOfTheMonth>
+            {calendarState.map((day) => {
+              return (
+                <DayOfMonth>
+                  <DayBox
+                    key={day + randomInt}
+                    activity={monthActivityState[day - 1] ? (monthActivityState[day - 1].commits > 0 ? monthActivityState[day - 1].commits : 0) : false}
+                    selected={parseInt(day) == state.day && month == state.month && year == state.year ? "selected" : null}
+                  >
+                    <Link href={`/commits/${router.query.slug[0]}/${router.query.slug[1]}/${router.query.slug[2]}/date/${year}/${month}/${day}`}>
+                      <a>{day}</a>
+                    </Link>
+                  </DayBox>
+                </DayOfMonth>
+              );
+            })}
+          </DaysOfTheMonth>
+        </CalendarBox>
+      );
+    }
   }
 
   // 📣 Final Rendering
@@ -114,7 +184,7 @@ const MonthBox = styled.div`
   background-color: #ffffff14;
   padding: 10px;
   border-radius: 5px;
-  transition:  0.7s;
+  transition: 0.7s;
 
   &:hover {
     background-color: #363167;
@@ -208,6 +278,22 @@ const CalendarBox = styled.div`
   }
 `;
 
+const LoadingPanel = styled.div`
+  //center everything in the box
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 230px;
+  width: 100%;
+  h5 {
+    width: 80%;
+    padding-top: 20px;
+    text-align: center;
+  }
+  //
+`;
+
 // CSS
 const DayBox: any = styled.div`
   background-color: ${(props: any) => (props.selected ? "white" : null)};
@@ -216,6 +302,10 @@ const DayBox: any = styled.div`
   border-radius: 5px;
   cursor: pointer;
   transition: 0.2s;
+
+  // Active status
+  border-bottom: ${(props: any) => (props.activity ? "solid" : null)};
+  border-color: ${(props: any) => (props.activity ? "hsl(141deg 89% 72% / " + (props.activity + 20) + "%);" : null)};
 
   &:hover {
     background-color: ${(props: any) => (props.selected ? "white" : "#101417")};
