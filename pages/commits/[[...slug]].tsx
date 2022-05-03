@@ -88,7 +88,7 @@ export default function Repo() {
     return (
       <>
         <GradientHeader>
-          <Header></Header>
+          <Header title={`Commits for ${slug[1]}/${slug[2]}`}></Header>
           <RepoBar>
             {" "}
             {slug[1]}/{slug[2]}

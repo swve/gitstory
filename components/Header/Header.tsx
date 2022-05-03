@@ -2,13 +2,14 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import logo from "@images/gitstory.png";
 import Image from "next/image";
+import Head from 'next/head'
 import { useRouter } from "next/router";
 import { useSession, signIn, signOut, getSession } from "next-auth/react";
 import Cookies from "js-cookie";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LogoutIcon from "@mui/icons-material/Logout";
 
-export default function Header({ withLeftPart = true, withPaddings = false }) {
+export default function Header({ withLeftPart = true, withPaddings = false , ...props }) {
   const { data: session } = useSession();
 
   const [headerSearchValue, setHeaderSearchValue] = useState([]);
@@ -64,6 +65,57 @@ export default function Header({ withLeftPart = true, withPaddings = false }) {
 
   return (
     <HeaderWrapper withPaddings={withPaddings}>
+      <Head>
+        <meta charSet="utf-8" />
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+        <title>{props.title} | Gitstory </title>
+        <meta name="HandheldFriendly" content="True" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        {/* SEO */}
+        <meta name="description" content={props.desc} />
+        <meta name="referrer" content="no-referrer-when-downgrade" />
+        <meta property="og:site_name" content="Gitstory" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content={props.title} />
+        <meta property="og:description" content={props.desc} />
+        <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+        <meta property="og:url" content="/" />
+        <meta property="og:image" content="/img/gitstory.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={props.title} />
+        <meta name="twitter:description" content={props.desc} />
+        <meta name="twitter:url" content="/" />
+        <meta name="twitter:image" content="/img/gitstory.png" />
+        <meta name="twitter:site" content="@graphicmade" />
+        <meta property="og:site_name" content="gitstory"></meta>
+        <meta property="og:type" content="website"></meta>
+        <meta property="og:locale" content="en-EN"></meta>
+        <meta name="twitter:creator" content="@graphicmade"></meta>
+        <meta name="theme-color" content="#17161b"></meta>
+
+        {/* SEO */}
+
+        <link
+          key="0"
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="img/apple-touch-icon.png"
+        ></link>
+        <link
+          key="1"
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="img/favicon-32x32.png"
+        ></link>
+        <link
+          key="2"
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="img/favicon-16x16.png"
+        ></link>
+      </Head>
       <LeftWrapper withLeftPart={withLeftPart}>
         <img onClick={goHome} src="/img/index_logo.png" width="120" height="34" />
         <SearchBoxHeader

@@ -63,7 +63,7 @@ export default function Repo() {
     return (
       <>
         <GradientHeader>
-          <Header></Header>
+          <Header title={`${slug[1]}/${slug[2]}`}></Header>
           <RepoBar>
             {slug[1]}/{slug[2]} <CircularProgress style={{ color: "white" }} size={30} thickness={6} />
           </RepoBar>
@@ -74,7 +74,7 @@ export default function Repo() {
     return (
       <>
         <GradientHeader>
-          <Header></Header>
+        <Header title={`${slug[1]}/${slug[2]}`}></Header>
           <RepoBar>
             {slug[1]}/{slug[2]}
           </RepoBar>

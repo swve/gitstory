@@ -1,11 +1,6 @@
 import React, { useState } from "react";
-import logo from "@images/gitstory.png";
-import Image from "next/image";
-import { useSelector, useDispatch } from "react-redux";
 import styled from "styled-components";
 import { useRouter } from "next/router";
-import { updateDate } from "@redux/actions";
-import InsideHeader from "@components/Header/Header";
 import KeyboardReturnIcon from "@mui/icons-material/KeyboardReturn";
 import Footer from "@components/Footer/Footer";
 import Header from "@components/Header/Header";
@@ -29,7 +24,7 @@ export default function Home() {
 
   return (
     <HomePage>
-      <Header withLeftPart={false} withPaddings={true}></Header>
+      <Header withLeftPart={false} withPaddings={true} title="Home"></Header>
       <LogoBox>
         {" "}
         <img src="/img/index_logo.png" height="70" />{" "}

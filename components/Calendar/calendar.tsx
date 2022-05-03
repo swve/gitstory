@@ -78,7 +78,6 @@ export default function Calendar(props) {
 
   // 📣 Interaction
   //--------------------------------
-  
 
   // 📣 Rendering
   //--------------------------------
@@ -106,7 +105,7 @@ export default function Calendar(props) {
           </HeadDaysOfTheWeek>
           <LoadingPanel>
             <CircularProgress style={{ color: "white" }} size={90} thickness={6} />
-            <h5>Searching for commits... this may take minutes</h5>
+            <h5>(BETA) Searching for commits... this may take minutes</h5>
           </LoadingPanel>
         </CalendarBox>
       );
@@ -118,7 +117,7 @@ export default function Calendar(props) {
             arrow
             enterDelay={800}
             placement="top"
-            title={"🔬 Experimental: Check " + monthsArray[month - 1] + " commits activity  "}
+            title={"🔬 BETA: Check " + monthsArray[month - 1] + " commits activity  "}
           >
             <MonthBox
               onClick={() => {
@@ -147,7 +146,7 @@ export default function Calendar(props) {
                     selected={parseInt(day) == state.day && month == state.month && year == state.year ? "selected" : null}
                   >
                     <Link href={`/commits/${router.query.slug[0]}/${router.query.slug[1]}/${router.query.slug[2]}/date/${year}/${month}/${day}`}>
-                      <a >{day}</a>
+                      <a>{day}</a>
                     </Link>
                   </DayBox>
                 </DayOfMonth>
