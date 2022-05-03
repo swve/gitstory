@@ -78,17 +78,7 @@ export default function Calendar(props) {
 
   // 📣 Interaction
   //--------------------------------
-  function handleClickDayOfMonth(day, e) {
-    router.push("/[...slug]/date/[...date]", `/commits/${router.query.slug[0]}/${router.query.slug[1]}/${router.query.slug[2]}/date/${year}/${month}/${day}`);
-    e.preventDefault();
-    dispatch(
-      updateDate({
-        day: day,
-        month: month,
-        year: year,
-      })
-    );
-  }
+  
 
   // 📣 Rendering
   //--------------------------------
@@ -157,7 +147,7 @@ export default function Calendar(props) {
                     selected={parseInt(day) == state.day && month == state.month && year == state.year ? "selected" : null}
                   >
                     <Link href={`/commits/${router.query.slug[0]}/${router.query.slug[1]}/${router.query.slug[2]}/date/${year}/${month}/${day}`}>
-                      <a>{day}</a>
+                      <a >{day}</a>
                     </Link>
                   </DayBox>
                 </DayOfMonth>

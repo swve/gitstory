@@ -1,12 +1,14 @@
 import Header from "@components/Header/Header";
 import { useRouter } from "next/router";
-import Link from 'next/link';
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { GitSt } from "@services/gitstory";
 import dayjs from "dayjs";
 import Loading from "@components/Loading/Loading";
 import CommitIcon from "@mui/icons-material/Commit";
+import { useSelector, useDispatch } from "react-redux";
+import { SelectedDateInterface, updateDate } from "@redux/actions";
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 import AccessTimeFilledIcon from "@mui/icons-material/AccessTimeFilled";
 import Tooltip from "@mui/material/Tooltip";
@@ -15,9 +17,17 @@ import FancyRender from "@components/Loading/FancyRender";
 import NumbersIcon from "@mui/icons-material/Numbers";
 import Footer from "@components/Footer/Footer";
 
+interface RootState {
+  selectedDate: SelectedDateInterface;
+}
+
 export default function Repo() {
   const router = useRouter();
   const slug = router.query.slug || [];
+
+  // Redux
+  const dispatch = useDispatch();
+  const state = useSelector((state: RootState) => state.selectedDate);
 
   // React State
   const [isLoading, setIsLoading] = useState(true);
@@ -39,11 +49,22 @@ export default function Repo() {
     }
   }
 
+  function updateReduxDate() {
+    dispatch(
+      updateDate({
+        day: parseInt(slug[6]),
+        month: parseInt(slug[5]),
+        year: parseInt(slug[4]),
+      })
+    );
+  }
+
   useEffect(() => {
     if (router.isReady) {
       // Get Date
       if (slug[3] === "date") {
         let date = new Date(parseInt(slug[4]), parseInt(slug[5]) - 1, parseInt(slug[6]));
+        updateReduxDate();
         getDayCommits(date, 0);
       } else {
         alert("error");
