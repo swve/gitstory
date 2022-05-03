@@ -33,7 +33,7 @@ export default function Home() {
         <img alt="Internet's git time machine" src="/img/description.png" />
       </DescriptionBox>
       <Search>
-        <SearchBox onKeyDown={keyPress} onChange={handleSearchTextChange} placeholder="Explore GitHub projects, e.g. : vercel/next.js"></SearchBox>
+        <SearchBox onKeyDown={keyPress} onChange={handleSearchTextChange} placeholder="Explore GitHub projects, e.g. : torvalds/linux"></SearchBox>
         <span>
           Press Enter/Return to search <KeyboardReturnIcon sx={{ fontSize: 10 }} />
         </span>

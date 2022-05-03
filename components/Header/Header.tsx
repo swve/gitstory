@@ -121,7 +121,7 @@ export default function Header({ withLeftPart = true, withPaddings = false , ...
         <SearchBoxHeader
           onKeyDown={keyPress}
           onChange={handleHeaderSearchTextChange}
-          placeholder="Explore GitHub projects, e.g. : vercel/next.js"
+          placeholder="Explore GitHub projects, e.g. : torvalds/linux"
         ></SearchBoxHeader>
       </LeftWrapper>
       <RightWrapper>
