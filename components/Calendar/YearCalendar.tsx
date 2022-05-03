@@ -22,7 +22,7 @@ export default function YearCalendar({ withRelativeTop = false, year }) {
   // 📣 Final Rendering
   //--------------------------------
   return (
-    <FancyRender >
+    <FancyRender>
       <YearCalendarBox>
         {year_dates.map((date) => {
           return <Calendar key={date + Math.random()} date={date} />;
@@ -42,4 +42,12 @@ const YearCalendarBox = styled.div`
   flex-wrap: wrap;
   margin: auto;
   justify-content: center;
+
+  @media screen and (max-width: 1400px) {
+    top: -120px;
+  }
+
+  @media screen and (max-width: 992px) {
+    top: -70px;
+  }
 `;

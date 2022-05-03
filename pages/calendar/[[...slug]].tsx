@@ -123,9 +123,11 @@ const RepoBar = styled.div`
 
 const Years = styled.div`
   padding-top: 30px;
+  display: flex;
+  flex-wrap: wrap;
 `;
 
-const YearBox: any = styled.b`
+const YearBox: any = styled.div`
   background-color: ${(props: any) => (props.selected ? "white" : null)};
   color: ${(props: any) => (props.selected ? "black" : "white")};
 
