@@ -14,6 +14,7 @@ export class GitSt {
   private client: string;
   private gitstory;
   private github_token_cookie = Cookies.get("github_at");
+  private api_usage_counter = 0;
 
   // Initialize the gitstory object
   init(params: ParamsInterface) {
@@ -28,18 +29,32 @@ export class GitSt {
   }
 
   public async yearsActive() {
+    this.updateApiUsage();
     this.gitstory.init(this.config);
     let years = await this.gitstory.yearsActive();
     return years;
   }
 
+  public async updateApiUsage() {
+    this.api_usage_counter = Cookies.get("apiUsage") ? parseInt(Cookies.get("apiUsage")) : 0;
+    this.api_usage_counter++;
+    Cookies.set("apiUsage", this.api_usage_counter);
+  }
+
+  public async getApiUsage() {
+    Cookies.get("apiUsage") ? parseInt(Cookies.get("apiUsage")) : 0;
+    return this.api_usage_counter;
+  }
+
   public async getCommitsBetween(startDate: string, endDate: string, per_page: number, page: number) {
+    this.updateApiUsage();
     this.gitstory.init(this.config);
     let commits = await this.gitstory.getCommitsBetweenDates(startDate, endDate, per_page, page);
     return commits;
   }
 
   public async getMonthCommitsActivity(year: string, month: string) {
+    this.updateApiUsage();
     let daysinmonth = dayjs("2019-01-25").daysInMonth();
     let CommitsActivityArray = [];
     for (let index = 0; index < daysinmonth; index++) {
