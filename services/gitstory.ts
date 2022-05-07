@@ -36,9 +36,17 @@ export class GitSt {
   }
 
   public async updateApiUsage() {
-    this.api_usage_counter = Cookies.get("apiUsage") ? parseInt(Cookies.get("apiUsage")) : 0;
-    this.api_usage_counter++;
-    Cookies.set("apiUsage", this.api_usage_counter);
+    let today = new Date();
+    if (Cookies.get("apiUsageStart") && Cookies.get("apiUsage")) {
+      let apiUsageStart = new Date(Cookies.get("apiUsageStart"));
+      let hour_later_from_start = apiUsageStart.setHours(apiUsageStart.getHours() + 1);
+
+      this.api_usage_counter = parseInt(Cookies.get("apiUsage")) + 1;
+      Cookies.set("apiUsage", this.api_usage_counter, { expires: new Date(hour_later_from_start) });
+    } else {
+      Cookies.set("apiUsageStart", today);
+      Cookies.set("apiUsage", this.api_usage_counter);
+    }
   }
 
   public async getApiUsage() {
