@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import logo from "@images/gitstory.png";
 import Image from "next/image";
-import Head from 'next/head'
+import Head from "next/head";
 import { useRouter } from "next/router";
 import { useSession, signIn, signOut, getSession } from "next-auth/react";
 import Cookies from "js-cookie";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LogoutIcon from "@mui/icons-material/Logout";
 
-export default function Header({ withLeftPart = true, withPaddings = false , ...props }) {
+export default function Header({ withLeftPart = true, withPaddings = false, ...props }) {
   const { data: session } = useSession();
 
   const [headerSearchValue, setHeaderSearchValue] = useState([]);
@@ -36,7 +36,6 @@ export default function Header({ withLeftPart = true, withPaddings = false , ...
     router.push("/");
   };
 
-
   // Execute functions
   saveGitHubSessionToCookie();
 
@@ -57,7 +56,8 @@ export default function Header({ withLeftPart = true, withPaddings = false , ...
     return (
       <>
         <BtnSignInWithGitHub onClick={() => signIn()}>
-          Sign in with GitHub <GitHubIcon sx={{ fontSize: 13 }} />
+          <GitHubIcon sx={{ marginRight: 1, fontSize: 15 }} />
+          Sign in with GitHub
         </BtnSignInWithGitHub>
       </>
     );
@@ -95,26 +95,9 @@ export default function Header({ withLeftPart = true, withPaddings = false , ...
 
         {/* SEO */}
 
-        <link
-          key="0"
-          rel="apple-touch-icon"
-          sizes="180x180"
-          href="img/apple-touch-icon.png"
-        ></link>
-        <link
-          key="1"
-          rel="icon"
-          type="image/png"
-          sizes="32x32"
-          href="img/favicon-32x32.png"
-        ></link>
-        <link
-          key="2"
-          rel="icon"
-          type="image/png"
-          sizes="16x16"
-          href="img/favicon-16x16.png"
-        ></link>
+        <link key="0" rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png"></link>
+        <link key="1" rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png"></link>
+        <link key="2" rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png"></link>
       </Head>
       <LeftWrapper withLeftPart={withLeftPart}>
         <img onClick={goHome} src="/img/index_logo.png" width="120" height="34" />
@@ -156,14 +139,22 @@ const SearchBoxHeader = styled.input`
 `;
 
 const BtnSignInWithGitHub = styled.button`
-  background-color: #0a0e12;
+  background-color: #22222d;
   color: white;
-  font-size: 14px;
+  font-size: 12px;
   font-family: "Inter";
+  font-weight: 800;
   cursor: pointer;
-  border: none;
-  border-radius: 5px;
+  letter-spacing: 0.2px;
+  border: solid 1px;
+  border-color: #ffffff0d;
+  border-radius: 8px;
   padding: 12px;
+
+  svg {
+    display: inline-block;
+    vertical-align: middle;
+  }
 `;
 
 const SessionWrapper = styled.div`
@@ -178,6 +169,7 @@ const SessionWrapper = styled.div`
 
   span {
     margin-right: 20px;
+    font-size: 13px;
   }
 
   img {
@@ -188,20 +180,20 @@ const SessionWrapper = styled.div`
 `;
 const RightWrapper = styled.div``;
 // CSS
-const HeaderWrapper :any = styled.div`
-display: flex;
-justify-content: space-between;
-padding-left: ${(props: any) => (props.withPaddings === true ? 130 : 0)}px;
-padding-right: ${(props: any) => (props.withPaddings  === true ? 130 : 0)}px;
-padding-top: ${(props: any) => (props.withPaddings  === true ? 30 : 0)}px;
+const HeaderWrapper: any = styled.div`
+  display: flex;
+  justify-content: space-between;
+  padding-left: ${(props: any) => (props.withPaddings === true ? 130 : 0)}px;
+  padding-right: ${(props: any) => (props.withPaddings === true ? 130 : 0)}px;
+  padding-top: ${(props: any) => (props.withPaddings === true ? 30 : 0)}px;
 `;
 
-const LeftWrapper :any  = styled.div`
-opacity: ${(props: any) => (props.withLeftPart  === true ? 1 : 0)};
-display: flex;
-img {
-  cursor: pointer;
-  justify-self: center;
-  margin-top: 5px;
-}
+const LeftWrapper: any = styled.div`
+  opacity: ${(props: any) => (props.withLeftPart === true ? 1 : 0)};
+  display: flex;
+  img {
+    cursor: pointer;
+    justify-self: center;
+    margin-top: 5px;
+  }
 `;
