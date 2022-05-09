@@ -4,11 +4,9 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import YearCalendar from "@components/Calendar/YearCalendar";
 import { GitSt } from "@services/gitstory";
-import Loading from "@components/Loading/Loading";
 import { useSelector, useDispatch } from "react-redux";
 import { SelectedDateInterface, updateDate } from "@redux/actions";
 import CircularProgress from "@mui/material/CircularProgress";
-import FancyRender from "@components/Loading/FancyRender";
 import Footer from "@components/Footer/Footer";
 
 interface RootState {
@@ -41,8 +39,6 @@ export default function Repo() {
       });
       active_years = await GitStory.yearsActive();
     } catch (error) {
-      //router.push("/error/404");
-      console.log("TODO: Redirect to 404");
       console.log(error);
     }
     setActiveYears(active_years);

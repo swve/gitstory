@@ -50,7 +50,7 @@ export class GitSt {
   }
 
   public async getApiUsage() {
-    Cookies.get("apiUsage") ? parseInt(Cookies.get("apiUsage")) : 0;
+    this.api_usage_counter =  Cookies.get("apiUsage") ? parseInt(Cookies.get("apiUsage")) : 0;
     return this.api_usage_counter;
   }
 

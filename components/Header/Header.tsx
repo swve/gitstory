@@ -1,18 +1,21 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import logo from "@images/gitstory.png";
-import Image from "next/image";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useSession, signIn, signOut, getSession } from "next-auth/react";
 import Cookies from "js-cookie";
-import GitHubIcon from "@mui/icons-material/GitHub";
 import LogoutIcon from "@mui/icons-material/Logout";
+import { GitSt } from "@services/gitstory";
+import Dialog from "@components/Dialog/Dialog";
+import SignWithGitHub from "@components/Buttons/SignWithGitHub";
 
 export default function Header({ withLeftPart = true, withPaddings = false, ...props }) {
   const { data: session } = useSession();
 
   const [headerSearchValue, setHeaderSearchValue] = useState([]);
+  const [apiUsageCounter, setApiUsageCounter] = useState(0);
+  const [openApiPopup, setOpenApiPopup] = React.useState(true);
+
   const router = useRouter();
   const slug = router.query.slug || [];
 
@@ -20,6 +23,22 @@ export default function Header({ withLeftPart = true, withPaddings = false, ...p
     let parsedValues = e.target.value.split("/");
     setHeaderSearchValue(parsedValues);
   };
+
+  async function checkApiUsage() {
+    const GitStory = new GitSt();
+    GitStory.init({ client: "github", owner: "swve", repo: "framestack" });
+    let api_usage_counter = await GitStory.getApiUsage();
+    setApiUsageCounter(api_usage_counter);
+    const visitor_limitation = 60;
+    const signed_user_limitation = 5000;
+    let api_limitation = session ? signed_user_limitation : visitor_limitation;
+    //alert("API usage: " + api_usage_counter + "/" + api_limitation);
+    if (apiUsageCounter > api_limitation) {
+      setOpenApiPopup(true);
+    } else {
+      setOpenApiPopup(false);
+    }
+  }
 
   async function saveGitHubSessionToCookie() {
     const sessionInfo = await getSession();
@@ -32,12 +51,14 @@ export default function Header({ withLeftPart = true, withPaddings = false, ...p
     }
   };
 
+
   const goHome = () => {
     router.push("/");
   };
 
   // Execute functions
   saveGitHubSessionToCookie();
+  checkApiUsage();
 
   const ProfileBox = () => {
     if (session) {
@@ -55,10 +76,7 @@ export default function Header({ withLeftPart = true, withPaddings = false, ...p
     }
     return (
       <>
-        <BtnSignInWithGitHub onClick={() => signIn()}>
-          <GitHubIcon sx={{ marginRight: 1, fontSize: 15 }} />
-          Sign in with GitHub
-        </BtnSignInWithGitHub>
+       <SignWithGitHub onclick={() => signIn()}> </SignWithGitHub>
       </>
     );
   };
@@ -110,11 +128,13 @@ export default function Header({ withLeftPart = true, withPaddings = false, ...p
       <RightWrapper>
         <ProfileBox></ProfileBox>
       </RightWrapper>
+
+      {/* POPUP */}
+      <Dialog visible={openApiPopup}></Dialog>
     </HeaderWrapper>
   );
 }
 
-const LogoWrapper = styled.div``;
 const SearchBoxHeader = styled.input`
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.37), rgba(0, 0, 0, 0.37));
   border: 1px solid rgb(255 255 255 / 0%);
@@ -138,24 +158,7 @@ const SearchBoxHeader = styled.input`
   }
 `;
 
-const BtnSignInWithGitHub = styled.button`
-  background-color: #22222d;
-  color: white;
-  font-size: 12px;
-  font-family: "Inter";
-  font-weight: 800;
-  cursor: pointer;
-  letter-spacing: 0.2px;
-  border: solid 1px;
-  border-color: #ffffff0d;
-  border-radius: 8px;
-  padding: 12px;
 
-  svg {
-    display: inline-block;
-    vertical-align: middle;
-  }
-`;
 
 const SessionWrapper = styled.div`
   justify-content: space-between;
@@ -197,3 +200,10 @@ const LeftWrapper: any = styled.div`
     margin-top: 5px;
   }
 `;
+
+
+// Dialog CSS 
+const ApiDialog = styled(Dialog)`
+
+
+`

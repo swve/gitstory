@@ -25,4 +25,9 @@ export default NextAuth({
       return session;
     },
   },
+  theme: {
+    colorScheme: "dark",
+    brandColor: "white",
+    logo: "../../img/index_logo.png",
+  }
 });

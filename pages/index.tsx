@@ -27,7 +27,7 @@ export default function Home() {
       <Header withLeftPart={false} withPaddings={true} title="Home"></Header>
       <LogoBox>
         {" "}
-        <img src="/img/index_logo.png" height="70" />{" "}
+        <img src="/img/index_logo.png" height="70" />{" "} <span>Beta</span>
       </LogoBox>
       <DescriptionBox>
         <img alt="Internet's git time machine" src="/img/description.png" />
@@ -56,6 +56,13 @@ const LogoBox = styled.div`
   justify-content: center;
   align-items: center;
   padding-top: 90px;
+
+  span{
+    font-size: 9px;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+  }
 `;
 
 const DescriptionBox = styled.div`

@@ -66,7 +66,6 @@ export default function Calendar(props) {
     setIsLoading(true);
     let activity = await GitStory.getMonthCommitsActivity(year, month);
     setMonthActivityState(activity);
-    console.log(activity);
 
     setIsScanOn(false);
     setIsLoading(false);
