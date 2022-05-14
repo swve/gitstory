@@ -38,11 +38,15 @@ export default function Repo() {
         repo: slug[2],
       });
       active_years = await GitStory.yearsActive();
+      setActiveYears(active_years);
+      setIsLoading(false);
     } catch (error) {
-      console.log(error);
+      // check for 404 errors
+      if (error.response.status === 404) {
+        router.push("/repo-not-found");
+      }
+      setIsLoading(true);
     }
-    setActiveYears(active_years);
-    setIsLoading(false);
   }
 
   function setCalendarYear(year: number) {
@@ -70,28 +74,28 @@ export default function Repo() {
     return (
       <>
         <GradientHeader>
-        <Header title={`${slug[1]}/${slug[2]}`}></Header>
+          <Header title={`${slug[1]}/${slug[2]}`}></Header>
           <RepoBar>
             {slug[1]}/{slug[2]}
           </RepoBar>
-            <Years>
-              {activeYears.map((yearElement) => {
-                return (
-                  <>
-                    <YearBox
-                      key={yearElement + "-" + Math.random()}
-                      onClick={() => {
-                        setCalendarYear(yearElement);
-                      }}
-                      selected={year == yearElement ? true : false}
-                    >
-                      {" "}
-                      {yearElement}
-                    </YearBox>
-                  </>
-                );
-              })}
-            </Years>
+          <Years>
+            {activeYears.map((yearElement) => {
+              return (
+                <>
+                  <YearBox
+                    key={yearElement + "-" + Math.random()}
+                    onClick={() => {
+                      setCalendarYear(yearElement);
+                    }}
+                    selected={year == yearElement ? true : false}
+                  >
+                    {" "}
+                    {yearElement}
+                  </YearBox>
+                </>
+              );
+            })}
+          </Years>
         </GradientHeader>
         <YearCalendar year={year}></YearCalendar>
         <Footer></Footer>
@@ -131,7 +135,7 @@ const YearBox: any = styled.div`
   transition: 0.2s;
   margin-right: 10px;
   padding: 8px;
-  
+
   border-radius: 5px;
 
   &:hover {

@@ -14,7 +14,7 @@ export default function Header({ withLeftPart = true, withPaddings = false, ...p
 
   const [headerSearchValue, setHeaderSearchValue] = useState([]);
   const [apiUsageCounter, setApiUsageCounter] = useState(0);
-  const [openApiPopup, setOpenApiPopup] = React.useState(true);
+  const [openApiPopup, setOpenApiPopup] = React.useState(false);
 
   const router = useRouter();
   const slug = router.query.slug || [];

@@ -44,8 +44,11 @@ export default function Repo() {
       setDateCommits(commits.data);
       setIsLoading(false);
     } catch (error) {
-      console.log("TODO: Redirect to 404");
-      console.log(error);
+      // check for 404 errors
+      if (error.response.status === 404) {
+        router.push("/repo-not-found");
+      }
+      setIsLoading(true);
     }
   }
 
