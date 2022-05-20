@@ -24,7 +24,7 @@ export default function Home() {
 
   return (
     <HomePage>
-      <Header withLeftPart={false} withPaddings={true} title="Home"></Header>
+      <Header disable_api_usage_check withLeftPart={false} withPaddings={true} title="Home"></Header>
       <LogoBox>
         {" "}
         <img src="/img/index_logo.png" height="70" />{" "} <span>Beta</span>
@@ -58,9 +58,10 @@ const LogoBox = styled.div`
   padding-top: 90px;
 
   span{
-    font-size: 9px;
+    font-size: 7px;
     text-transform: uppercase;
     font-weight: bold;
+    opacity: 0.20;
     letter-spacing: 0.5px;
   }
 `;

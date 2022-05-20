@@ -2,6 +2,7 @@ import SignWithGitHub from "@components/Buttons/SignWithGitHub";
 import React from "react";
 import styled from "styled-components";
 import { useSession, signIn, signOut, getSession } from "next-auth/react";
+import Link from "next/link";
 
 function Dialog(props) {
   return (
@@ -11,7 +12,10 @@ function Dialog(props) {
         <p>GitStory uses the GitHub Public API which have a usage rate limitation for non-authenticated users, you've just reached that limit.</p>
         <p>Please consider sign in using your GitHub account to be able to continue using GitStory, or wait for 1 hour.</p>
         <DialogActions>
-          <a href="">Privacy Policy</a> <SignWithGitHub onclick={() => signIn()}></SignWithGitHub>
+          <Link href="/privacy">
+            <a>Privacy Policy</a>
+          </Link>{" "}
+          <SignWithGitHub onclick={() => signIn()}></SignWithGitHub>
         </DialogActions>
       </DialogBox>
     </DialogArea>
@@ -20,7 +24,7 @@ function Dialog(props) {
 
 export default Dialog;
 
-const DialogArea : any = styled.div`
+const DialogArea: any = styled.div`
   // center element in the middle of the screen
   position: absolute;
 
@@ -33,7 +37,7 @@ const DialogArea : any = styled.div`
   border-radius: 8px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   z-index: 100;
-  display : ${(props : any) => props.visible ? "flex" : "none"};
+  display: ${(props: any) => (props.visible ? "flex" : "none")};
   flex-direction: column;
   justify-content: center;
   align-items: center;

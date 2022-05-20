@@ -51,14 +51,17 @@ export default function Header({ withLeftPart = true, withPaddings = false, ...p
     }
   };
 
-
   const goHome = () => {
     router.push("/");
   };
 
   // Execute functions
   saveGitHubSessionToCookie();
-  checkApiUsage();
+  if (props.disable_api_usage_check) {
+    //setOpenApiPopup(true);
+  }else{
+    checkApiUsage();
+  }
 
   const ProfileBox = () => {
     if (session) {
@@ -76,7 +79,7 @@ export default function Header({ withLeftPart = true, withPaddings = false, ...p
     }
     return (
       <>
-       <SignWithGitHub onclick={() => signIn()}> </SignWithGitHub>
+        <SignWithGitHub onclick={() => signIn()}> </SignWithGitHub>
       </>
     );
   };
@@ -158,8 +161,6 @@ const SearchBoxHeader = styled.input`
   }
 `;
 
-
-
 const SessionWrapper = styled.div`
   justify-content: space-between;
   //center horizontal
@@ -201,9 +202,5 @@ const LeftWrapper: any = styled.div`
   }
 `;
 
-
-// Dialog CSS 
-const ApiDialog = styled(Dialog)`
-
-
-`
+// Dialog CSS
+const ApiDialog = styled(Dialog)``;
