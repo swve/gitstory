@@ -13,7 +13,7 @@ function Privacy() {
           <h2>GitHub account</h2>
           <p>GitStory uses your account to generate a token on your behalf that is used to get data from the GitHub API </p>
           <p>
-            GitStory Connect, and is only purpose is to generate a token to allow you to make requests on the GitHubAPI without limitations, the following
+            GitStory Connect's only purpose is to generate a token to allow you to make requests on the GitHubAPI without limitations, the following
             permissions required are:
           </p>
           <ul>
@@ -35,7 +35,7 @@ function Privacy() {
             </li>
           </ul>
           <p>
-            Your private repositories are not accesible to GitStory Connect, only public repositories are supported{" "}
+            Your private repositories are not accessible by GitStory Connect, only public repositories are supported{" "}
             <a href="https://github.com/swve/gitstorykit" target="_blank" rel="noopener noreferrer">
               (GitStoryKit)
             </a>

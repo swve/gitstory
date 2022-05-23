@@ -103,7 +103,7 @@ export default function Calendar(props) {
             })}
           </HeadDaysOfTheWeek>
           <LoadingPanel>
-            <CircularProgress style={{ color: "white" }} size={90} thickness={6} />
+            <CircularProgress style={{ color: "white" }} size={60} thickness={6} />
             <h5>(BETA) Searching for commits... this may take minutes</h5>
           </LoadingPanel>
         </CalendarBox>
@@ -273,7 +273,7 @@ const LoadingPanel = styled.div`
   justify-content: center;
   align-items: center;
   height: 230px;
-  width: 100%;
+  width: 245px;
   h5 {
     width: 80%;
     padding-top: 20px;

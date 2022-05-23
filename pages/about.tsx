@@ -133,7 +133,7 @@ const AboutWrapper = styled.div`
 `;
 
 const GradientHeader = styled.div`
-  height: 880px;
+  height: 820px;
   padding-left: 130px;
   padding-right: 130px;
   padding-top: 30px;
