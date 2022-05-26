@@ -290,10 +290,12 @@ const DayBox: any = styled.div`
   border-radius: 5px;
   cursor: pointer;
   transition: 0.2s;
+  height: 30px;
+  width: 30px;
 
   // Active status
-  border-bottom: ${(props: any) => (props.activity ? "solid" : null)};
-  border-color: ${(props: any) => (props.activity ? "hsl(141deg 89% 72% / " + (props.activity + 20) + "%);" : null)};
+  border: ${(props: any) => (props.activity ? "solid" : null)};
+  border-color: ${(props: any) => (props.activity ? "hsl(246deg 49% 54% / " + (props.activity + 20) + "%);" : null)};
 
   &:hover {
     background-color: ${(props: any) => (props.selected ? "white" : "#101417")};

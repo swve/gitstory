@@ -13,7 +13,7 @@ function About() {
       <GradientHeader>
         <Header disable_api_usage_check title={`About`}></Header>
         <AboutWrapper>
-          <img src="/img/index_logo.png" height="40" /> <h1>Go back in time and explore your favorite git projects !</h1>
+          <img src="/img/index_logo.png" height="40" /> <h1>Go back in time and explore your favorite Open source projects !</h1>
           <AboutElements>
             <Element>
               <CalendarMonthIcon sx={{ marginRight: 1, fontSize: 75 }} />
