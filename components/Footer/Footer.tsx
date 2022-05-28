@@ -14,7 +14,7 @@ export default function Footer(props) {
         </li>
         <li>
           <Link href={`/privacy`}>
-            <a >Privacy</a>
+            <a>Privacy</a>
           </Link>
         </li>
         <li>
@@ -34,13 +34,16 @@ export default function Footer(props) {
 
 const FooterWrapper: any = styled.div`
   position: relative;
-  font-size: 14px;
   display: flex;
   margin: auto;
   justify-content: center;
   font-size: 12px;
   margin-top: ${(props: any) => (props.home ? "8%" : "2%")};
   padding-bottom: ${(props: any) => (props.home ? "0%" : "3%")};
+
+  @media (max-width: 768px) {
+    font-size: 10px;
+  }
 
   ul {
     margin: 0;
