@@ -138,7 +138,7 @@ export default function Repo() {
                       {console.log(commit)}
                       <a target="_blank" href={`https://github.com/${slug[1]}/${slug[2]}/tree/${commit.sha}/`}>
                         <Tooltip title="Travel in time to that commit, in GitHub">
-                          <AccessTimeFilledIcon sx={{ fontSize: 30 }} />
+                          <AccessTimeFilledIcon sx={{ fontSize: 30  }} />
                         </Tooltip>
                       </a>
                     </CommitRightGlobal>
@@ -168,6 +168,10 @@ const ListOfCommitsBox = styled.div`
 
   width: 85%;
   top: -150px;
+
+  @media (max-width: 768px) {
+    top: -50px;
+  }
   position: relative;
   display: flex;
   flex-direction: row;
@@ -189,6 +193,11 @@ const GradientHeader = styled.div`
   padding-left: 130px;
   padding-right: 130px;
   padding-top: 30px;
+
+  @media (max-width: 768px) {
+    padding-left: 60px;
+    padding-right: 60px;
+  }
 
   background: linear-gradient(180deg, #09090a 0%, rgba(39, 49, 55, 0.52) 100%),
     linear-gradient(228.87deg, rgba(69, 80, 174, 0.54) 9.05%, rgba(227, 9, 88, 0.27) 51.25%, rgba(255, 255, 255, 0) 84.11%),
@@ -249,6 +258,12 @@ const CommitRightGlobal = styled.div`
 
   a {
     margin-left: 20px;
+  }
+
+  svg{
+    background-color: #10131b8f;
+    padding: 5px;
+    border-radius: 3px;
   }
 `;
 const CommitLeftTopInfo = styled.div`

@@ -10,7 +10,7 @@ function Dialog(props) {
       <DialogBox>
         <DialogTitle>You've reached the GitHub Public API limitation</DialogTitle>
         <p>GitStory uses the GitHub Public API which have a usage rate limitation for non-authenticated users, you've just reached that limit.</p>
-        <p>Please consider sign in using your GitHub account to be able to continue using GitStory, or wait for 1 hour.</p>
+        <p>Please consider sign in using your GitHub account to be able to continue using GitStory, or please wait for 1 hour.</p>
         <DialogActions>
           <Link href="/privacy">
             <a>Privacy Policy</a>
@@ -59,6 +59,11 @@ const DialogBox = styled.div`
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   z-index: 100;
 
+
+  @media (max-width: 768px) {
+    width: 300px;
+    height: 410px;
+  }
   p {
     font-size: 14px;
     color: #ffffffad;

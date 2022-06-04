@@ -41,7 +41,6 @@ function About() {
               by <img src="/img/sweave.png" height="12" alt="" />
             </p>
           </MadeBy>
-          
         </AboutWrapper>
       </GradientHeader>
       <Footer></Footer>
@@ -111,6 +110,11 @@ const AboutElements = styled.div`
   justify-content: space-between;
   margin-left: 120px;
   margin-right: 120px;
+
+  @media (max-width: 768px) {
+    margin-left: 60px;
+    margin-right: 60px;
+  }
   flex-wrap: wrap;
 `;
 
@@ -127,8 +131,15 @@ const AboutWrapper = styled.div`
     margin: auto;
     padding-top: 20px;
     font-size: 45px;
-    line-height: 46px;
-    letter-spacing: -2px;
+    line-height: 42px;
+    letter-spacing: -1.2px;
+
+    @media (max-width: 768px) {
+      width: 90%;
+      line-height: 25px;
+      font-weight: bolder;
+      font-size: 25px !important;
+    }
   }
 `;
 
@@ -136,6 +147,11 @@ const GradientHeader = styled.div`
   height: 820px;
   padding-left: 130px;
   padding-right: 130px;
+  @media (max-width: 768px) {
+    padding-left: 60px;
+    padding-right: 60px;
+  }
+
   padding-top: 30px;
   background: linear-gradient(180deg, #09090a 0%, rgba(39, 49, 55, 0.52) 100%),
     linear-gradient(228.87deg, rgba(69, 80, 174, 0.54) 9.05%, rgba(227, 9, 88, 0.27) 51.25%, rgba(255, 255, 255, 0) 84.11%),
@@ -147,9 +163,8 @@ const GradientHeader = styled.div`
   }
 
   // media query for mobile
-    @media (max-width: 1500px) {
-
-        height: 1650px;
-    }
+  @media (max-width: 1500px) {
+    height: 1650px;
+  }
 `;
 export default About;

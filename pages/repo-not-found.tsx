@@ -31,8 +31,18 @@ const GradientHeader = styled.div`
     linear-gradient(228.87deg, rgba(69, 80, 174, 0.54) 9.05%, rgba(227, 9, 88, 0.27) 51.25%, rgba(255, 255, 255, 0) 84.11%),
     linear-gradient(243.33deg, #4c15eb 5.62%, #245aaa 36.13%, rgba(221, 50, 13, 0.71) 127.92%);
 
+  @media (max-width: 768px) {
+    padding-left: 60px;
+    padding-right: 60px;
+  }
+
   h1 {
     padding-top: 20px;
     font-size: 45px;
+  }
+
+  // media query for mobile
+  @media (max-width: 1500px) {
+    height: 650px;
   }
 `;

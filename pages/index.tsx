@@ -27,7 +27,7 @@ export default function Home() {
       <Header disable_api_usage_check withLeftPart={false} withPaddings={true} title="Home"></Header>
       <LogoBox>
         {" "}
-        <img src="/img/index_logo.png" height="70" />{" "} <span>Beta</span>
+        <img src="/img/index_logo.png" /> <span>Beta</span>
       </LogoBox>
       <DescriptionBox>
         <img alt="Internet's git time machine" src="/img/description.png" />
@@ -57,11 +57,19 @@ const LogoBox = styled.div`
   align-items: center;
   padding-top: 90px;
 
-  span{
+  img {
+    height: 70px;
+
+    @media (max-width: 768px) {
+      height: 30px;
+    }
+  }
+
+  span {
     font-size: 7px;
     text-transform: uppercase;
     font-weight: bold;
-    opacity: 0.20;
+    opacity: 0.2;
     letter-spacing: 0.5px;
   }
 `;
@@ -74,6 +82,10 @@ const DescriptionBox = styled.div`
 
   img {
     width: 30%;
+
+    @media (max-width: 768px) {
+      width: 50%;
+    }
   }
 `;
 
@@ -106,14 +118,27 @@ const SearchBox = styled.input`
   color: white;
   transition: all 0.3s ease-in-out;
 
+  @media (max-width: 768px) {
+    width: 250px;
+    margin-top: 10px;
+    font-size: 9px;
+    height: 31px;
+  }
+
   &:focus {
     outline: none;
     width: 700px;
     font-size: 16px;
 
+    @media (max-width: 768px) {
+      width: 270px;
+      font-size: 10px;
+      height: 31px;
+    }
+
     ::placeholder {
-    color: rgba(255, 255, 255, 0.33);
-  }
+      color: rgba(255, 255, 255, 0.33);
+    }
   }
 
   ::placeholder {
