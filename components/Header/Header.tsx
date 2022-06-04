@@ -59,7 +59,7 @@ export default function Header({ withLeftPart = true, withPaddings = false, ...p
   saveGitHubSessionToCookie();
   if (props.disable_api_usage_check) {
     //setOpenApiPopup(true);
-  }else{
+  } else {
     checkApiUsage();
   }
 
@@ -182,7 +182,12 @@ const SessionWrapper = styled.div`
     margin-right: 20px;
   }
 `;
-const RightWrapper = styled.div``;
+const RightWrapper = styled.div`
+  @media (max-width: 768px) {
+    margin: auto;
+    margin-bottom: 30px;
+  }
+`;
 // CSS
 const HeaderWrapper: any = styled.div`
   display: flex;
@@ -190,6 +195,12 @@ const HeaderWrapper: any = styled.div`
   padding-left: ${(props: any) => (props.withPaddings === true ? 130 : 0)}px;
   padding-right: ${(props: any) => (props.withPaddings === true ? 130 : 0)}px;
   padding-top: ${(props: any) => (props.withPaddings === true ? 30 : 0)}px;
+
+  @media (max-width: 768px) {
+    flex-direction: column-reverse;
+    padding-left: ${(props: any) => (props.withPaddings === true ? 60 : 0)}px;
+    padding-right: ${(props: any) => (props.withPaddings === true ? 60 : 0)}px;
+  }
 `;
 
 const LeftWrapper: any = styled.div`

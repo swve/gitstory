@@ -13,8 +13,8 @@ function Privacy() {
           <h2>GitHub account</h2>
           <p>GitStory uses your account to generate a token on your behalf that is used to get data from the GitHub API </p>
           <p>
-            GitStory Connect's only purpose is to generate a token to allow you to make requests on the GitHubAPI without limitations, the following
-            permissions required are:
+            GitStory Connect's only purpose is to generate a token to allow you to make requests on the GitHubAPI without limitations, the following permissions
+            required are:
           </p>
           <ul>
             <li>
@@ -138,6 +138,11 @@ const GradientHeader = styled.div`
   padding-left: 130px;
   padding-right: 130px;
   padding-top: 30px;
+
+  @media (max-width: 768px) {
+    padding-left: 60px;
+    padding-right: 60px;
+  }
   background: linear-gradient(180deg, #09090a 0%, rgba(39, 49, 55, 0.52) 100%),
     linear-gradient(228.87deg, rgba(69, 80, 174, 0.54) 9.05%, rgba(227, 9, 88, 0.27) 51.25%, rgba(255, 255, 255, 0) 84.11%),
     linear-gradient(243.33deg, #4c15eb 5.62%, #245aaa 36.13%, rgba(221, 50, 13, 0.71) 127.92%);

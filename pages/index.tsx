@@ -27,7 +27,7 @@ export default function Home() {
       <Header disable_api_usage_check withLeftPart={false} withPaddings={true} title="Home"></Header>
       <LogoBox>
         {" "}
-        <img src="/img/index_logo.png" />{" "} <span>Beta</span>
+        <img src="/img/index_logo.png" /> <span>Beta</span>
       </LogoBox>
       <DescriptionBox>
         <img alt="Internet's git time machine" src="/img/description.png" />
@@ -57,7 +57,6 @@ const LogoBox = styled.div`
   align-items: center;
   padding-top: 90px;
 
-
   img {
     height: 70px;
 
@@ -66,11 +65,11 @@ const LogoBox = styled.div`
     }
   }
 
-  span{
+  span {
     font-size: 7px;
     text-transform: uppercase;
     font-weight: bold;
-    opacity: 0.20;
+    opacity: 0.2;
     letter-spacing: 0.5px;
   }
 `;
@@ -124,8 +123,6 @@ const SearchBox = styled.input`
     margin-top: 10px;
     font-size: 9px;
     height: 31px;
-
-    
   }
 
   &:focus {
@@ -134,16 +131,14 @@ const SearchBox = styled.input`
     font-size: 16px;
 
     @media (max-width: 768px) {
-    width: 270px;
-    font-size: 10px;
-    height: 31px;
-
-    
-  }
+      width: 270px;
+      font-size: 10px;
+      height: 31px;
+    }
 
     ::placeholder {
-    color: rgba(255, 255, 255, 0.33);
-  }
+      color: rgba(255, 255, 255, 0.33);
+    }
   }
 
   ::placeholder {
