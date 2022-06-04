@@ -151,6 +151,10 @@ const SearchBoxHeader = styled.input`
   color: white;
   transition: all 0.3s ease-in-out;
 
+  @media (max-width: 768px) {
+    width: 80%;
+  }
+
   &:focus {
     outline: none;
     width: 700px;

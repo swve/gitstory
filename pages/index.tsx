@@ -19,6 +19,12 @@ export default function Home() {
   const keyPress = (e) => {
     if (e.keyCode == 13) {
       router.push("/calendar/github/" + searchValue[0] + "/" + searchValue[1]);
+      // push with window.location.href
+     // detect if user is from a mobile device
+      if (window.innerWidth < 768) {
+        window.location.href = "/calendar/github/" + searchValue[0] + "/" + searchValue[1];
+      }
+       
     }
   };
 
