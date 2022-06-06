@@ -11,7 +11,7 @@ function About() {
   return (
     <>
       <GradientHeader>
-        <Header disable_api_usage_check title={`About`}></Header>
+        <Header disable_api_usage_check title={`About`} desc="Back in time and explore your favorite Open source projects"></Header>
         <AboutWrapper>
           <img src="/img/index_logo.png" height="40" /> <h1>Go back in time and explore your favorite Open source projects !</h1>
           <AboutElements>

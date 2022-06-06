@@ -7,7 +7,7 @@ function Privacy() {
   return (
     <>
       <GradientHeader>
-        <Header disable_api_usage_check title={`Privacy`}></Header>
+        <Header disable_api_usage_check title={`Privacy`} desc="GitStory's Privacy Policy"></Header>
         <h1>Privacy</h1>
         <PrivacyInfo>
           <h2>GitHub account</h2>

@@ -30,7 +30,7 @@ export default function Home() {
 
   return (
     <HomePage>
-      <Header disable_api_usage_check withLeftPart={false} withPaddings={true} title="Home"></Header>
+      <Header disable_api_usage_check withLeftPart={false} withPaddings={true} title="Home" desc="Internet's Git time machine."></Header>
       <LogoBox>
         {" "}
         <img src="/img/index_logo.png" /> <span>Beta</span>
