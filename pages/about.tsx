@@ -38,7 +38,7 @@ function About() {
               <span role="img" aria-label="heart">
                 💜
               </span>{" "}
-              by <img src="/img/sweave.png" height="12" alt="" />
+              by <a target={"_blank"} href="https://twitter.com/sw3ave"><img src="/img/sweave.png" height="12" alt="" /></a>
             </p>
           </MadeBy>
         </AboutWrapper>
