@@ -27,6 +27,11 @@ export default function Footer(props) {
             <a target={"_blank"}>Contribute</a>
           </Link>
         </li>
+        <li>
+        <Link href={`https://forms.gle/GRacRdWYuGCjA1HZ8`}>
+            <a target={"_blank"}>Feedback</a>
+          </Link>
+        </li>
       </ul>
     </FooterWrapper>
   );
