@@ -17,11 +17,11 @@ function About() {
           <AboutElements>
             <Element>
               <CalendarMonthIcon sx={{ marginRight: 1, fontSize: 75 }} />
-              <p>Explore your favorite projects by going back in time using the reactive calendar</p>
+              <p>Use the Reactive calendar to go back in time</p>
             </Element>
             <Element>
               <GitHubIcon sx={{ marginRight: 1, fontSize: 75 }} />
-              <p>See the list of commits by day/month/year</p>
+              <p>Check commits by day, month and year</p>
             </Element>
             <Element>
               <SensorsIcon sx={{ marginRight: 1, fontSize: 75 }} />
@@ -29,7 +29,7 @@ function About() {
             </Element>
             <Element>
               <AccessTimeFilledIcon sx={{ marginRight: 1, fontSize: 75 }} />
-              <p>Explore "snapshots" of GitHub repositories by navigating to the exact tree of a commit </p>
+              <p>Explore "snapshots" of GitHub repositories by navigating to the exact commit </p>
             </Element>
           </AboutElements>
           <MadeBy>
@@ -38,7 +38,10 @@ function About() {
               <span role="img" aria-label="heart">
                 💜
               </span>{" "}
-              by <a target={"_blank"} href="https://twitter.com/sw3ave"><img src="/img/sweave.png" height="12" alt="" /></a>
+              by{" "}
+              <a target={"_blank"} href="https://twitter.com/sw3ave">
+                <img src="/img/sweave.png" height="12" alt="" />
+              </a>
             </p>
           </MadeBy>
         </AboutWrapper>

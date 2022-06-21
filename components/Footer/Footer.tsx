@@ -4,40 +4,47 @@ import styled from "styled-components";
 
 export default function Footer(props) {
   return (
-    <FooterWrapper home={props.home}>
-      © 2022 Sweave &nbsp;&nbsp;⏤{" "}
-      <ul>
-        <li>
-          <Link href={`/about`}>
-            <a>About</a>
-          </Link>
-        </li>
-        <li>
-          <Link href={`/privacy`}>
-            <a>Privacy</a>
-          </Link>
-        </li>
-        <li>
-          <Link href={`https://github.com/swve/gitstorykit`}>
-            <a target={"_blank"}>Kit</a>
-          </Link>
-        </li>
-        <li>
-          <Link href={`https://github.com/swve/gitstorykit/blob/master/CONTRIBUTING.md`}>
-            <a target={"_blank"}>Contribute</a>
-          </Link>
-        </li>
-        <li>
-        <Link href={`https://forms.gle/GRacRdWYuGCjA1HZ8`}>
-            <a target={"_blank"}>Feedback</a>
-          </Link>
-        </li>
-      </ul>
-    </FooterWrapper>
+    <>
+      <FooterCopyright home={props.home}>
+        © 2022 Sweave &nbsp;&nbsp;⏤{" "}
+        <ul>
+          <li>
+            <Link href={`/about`}>
+              <a>About</a>
+            </Link>
+          </li>
+          <li>
+            <Link href={`/privacy`}>
+              <a>Privacy</a>
+            </Link>
+          </li>
+          <li>
+            <Link href={`https://github.com/swve/gitstorykit`}>
+              <a target={"_blank"}>Kit</a>
+            </Link>
+          </li>
+          <li>
+            <Link href={`https://github.com/swve/gitstory`}>
+              <a target={"_blank"}>GitHub</a>
+            </Link>
+          </li>
+          <li>
+            <Link href={`/sponsoring`}>
+              <a>Sponsoring</a>
+            </Link>
+          </li>
+          <li>
+            <Link href={`https://forms.gle/GRacRdWYuGCjA1HZ8`}>
+              <a target={"_blank"}>Feedback</a>
+            </Link>
+          </li>
+        </ul>
+      </FooterCopyright>
+    </>
   );
 }
 
-const FooterWrapper: any = styled.div`
+const FooterCopyright: any = styled.div`
   position: relative;
   display: flex;
   margin: auto;
