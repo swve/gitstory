@@ -37,7 +37,7 @@ const SponsoInfo = styled.div`
   background-color: #171d21e6;
   -webkit-backdrop-filter: saturate(180%) blur(14px);
   backdrop-filter: saturate(180%) blur(14px);
-
+  margin: auto;
   padding: 50px;
   padding-top: 10px;
   width: fit-content;
