@@ -135,7 +135,7 @@ const GradientHeader = styled.div`
 
   // media query for mobile
   @media (max-width: 1500px) {
-    height: 1650px;
+    height: 800px;
   }
 `;
 export default About;
