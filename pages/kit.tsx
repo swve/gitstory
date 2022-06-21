@@ -7,7 +7,7 @@ function About() {
   return (
     <>
       <GradientHeader>
-        <Header disable_api_usage_check title={`About`} desc="Back in time and explore your favorite Open source projects"></Header>
+        <Header disable_api_usage_check title={`Kit`} desc="A light git time machine JavaScript library"></Header>
         <AboutWrapper>
           <img src="/img/gitstorykit_transparent.png" height="60" /> <h1>A light git time machine JavaScript library</h1>
           <AboutElements>
