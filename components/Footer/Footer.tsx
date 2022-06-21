@@ -19,8 +19,8 @@ export default function Footer(props) {
             </Link>
           </li>
           <li>
-            <Link href={`https://github.com/swve/gitstorykit`}>
-              <a target={"_blank"}>Kit</a>
+            <Link href={`/kit`}>
+              <a >Kit</a>
             </Link>
           </li>
           <li>
