@@ -217,5 +217,3 @@ const LeftWrapper: any = styled.div`
   }
 `;
 
-// Dialog CSS
-const ApiDialog = styled(Dialog)``;
