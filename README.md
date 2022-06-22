@@ -46,6 +46,8 @@ GitStoryKit is light Javascript library that allows easy time back actions, it i
 
 <a href="https://vercel.com/?utm_source=graphicmade&utm_campaign=oss#gh-dark-mode-only"><img style="padding-right:30px" width="130px" src="public/img/vercel-logotype-light.png"></img></a>
 
+**[→ Sponsor GitStory](https://github.com/sponsors/swve)**
+
 # Contributing
 
 To contribute or understand the code structure,
