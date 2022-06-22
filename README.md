@@ -4,7 +4,7 @@
   </a>
 </p>
 <p align="center"><br>
-  <a href="https://gitstory.app#gh-white-mode-only">
+  <a href="https://gitstory.app#gh-light-mode-only">
     <img src="public/img/index_logo_white.png" height="60">
   </a>
 </p>
@@ -36,7 +36,7 @@ Got any features ideas ? Feel free to submit yours!
 # Kit
 
 <a href="https://gitstory.app#gh-dark-mode-only"><img src="public/img/gitstorykit_transparent.png" height="40"></a>
-<a href="https://gitstory.app#gh-dark-mode-only"><img src="public/img/gitstorykit_transparent_white.png" height="40"></a>
+<a href="https://gitstory.app#gh-light-mode-only"><img src="public/img/gitstorykit_transparent_white.png" height="40"></a>
 
 GitStoryKit is light Javascript library that allows easy time back actions, it is used in GitStory.
 
@@ -44,9 +44,9 @@ GitStoryKit is light Javascript library that allows easy time back actions, it i
 
 # Sponsors
 
-<a href="https://vercel.com/?utm_source=graphicmade&utm_campaign=oss#gh-light-mode-only"><img style="padding-right:30px" width="130px" src="public/img/vercel-logotype-light.png"></img></a>
+<a href="https://vercel.com/?utm_source=graphicmade&utm_campaign=oss#gh-light-mode-only"><img style="padding-right:30px" width="130px" src="public/img/vercel-logotype-dark.png"></img></a>
 
-<a href="https://vercel.com/?utm_source=graphicmade&utm_campaign=oss#gh-dark-mode-only"><img style="padding-right:30px" width="130px" src="public/img/vercel-logotype-dark.png"></img></a>
+<a href="https://vercel.com/?utm_source=graphicmade&utm_campaign=oss#gh-dark-mode-only"><img style="padding-right:30px" width="130px" src="public/img/vercel-logotype-light.png"></img></a>
 
 # Contributing
 
