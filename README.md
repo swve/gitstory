@@ -3,10 +3,9 @@
     <img src="public/img/index_logo.png" height="60">
   </a>
 </p>
-
 <p align="center"><br>
-  <a href="https://gitstory.app">
-    <img src="public/img/gitstory_web.png" height="240">
+  <a target="_blank" href="https://gitstory.app">
+    <img src="public/img/gitstory_web.png" height="400">
   </a>
 </p>
 <p align="center">
