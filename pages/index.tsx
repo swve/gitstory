@@ -20,11 +20,10 @@ export default function Home() {
     if (e.keyCode == 13) {
       router.push("/calendar/github/" + searchValue[0] + "/" + searchValue[1]);
       // push with window.location.href
-     // detect if user is from a mobile device
+      // detect if user is from a mobile device
       if (window.innerWidth < 768) {
         window.location.href = "/calendar/github/" + searchValue[0] + "/" + searchValue[1];
       }
-       
     }
   };
 
@@ -87,7 +86,7 @@ const DescriptionBox = styled.div`
   padding-top: 40px;
 
   img {
-    width: 30%;
+    width: 420px;
 
     @media (max-width: 768px) {
       width: 50%;

@@ -12,7 +12,9 @@ function Privacy() {
         <SponsoInfo>
           <h2>Sponsors ✨</h2>
 
-          <p>GitStory isn't sponsored yet.</p>
+          <Sponsors>
+            <img src="/img/vercel-logotype-light.png" alt="" />
+          </Sponsors>
           <p>
             If you like GitStory and find it useful please feel free to support me & the open source project through GitHub sponsors{" "}
             <a href="https://github.com/sponsors/swve" target="_blank" rel="noopener noreferrer">
@@ -24,7 +26,8 @@ function Privacy() {
             Your sponsorship helps to maintain, improve, update and support GitStory and{" "}
             <a href="https://framestack.net" target="_blank" rel="noopener noreferrer">
               Framestack
-            </a> and future incoming open source projects.
+            </a>{" "}
+            and future incoming open source projects.
           </p>
         </SponsoInfo>
         <Footer></Footer>
@@ -33,6 +36,18 @@ function Privacy() {
   );
 }
 
+const Sponsors = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 50px;
+
+  img {
+    width: 170px;
+  }
+`;
 const SponsoInfo = styled.div`
   background-color: #171d21e6;
   -webkit-backdrop-filter: saturate(180%) blur(14px);
