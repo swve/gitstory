@@ -3,7 +3,6 @@
     <img src="public/img/index_logo.png" height="60">
   </a>
 </p>
-
 <p align="center"><br>
   <a href="https://gitstory.app#gh-white-mode-only">
     <img src="public/img/index_logo_white.png" height="60">
@@ -12,7 +11,7 @@
 
 <p align="center"><br>
   <a href="https://gitstory.app">
-    <img src="public/img/gitstory_web.png" height="240">
+    <img src="public/img/gitstory_web.png" height="400">
   </a>
 </p>
 <p align="center">
