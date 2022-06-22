@@ -2,8 +2,6 @@
   <a href="https://gitstory.app#gh-dark-mode-only">
     <img src="public/img/index_logo.png" height="60">
   </a>
-</p>
-<p align="center"><br>
   <a href="https://gitstory.app#gh-light-mode-only">
     <img src="public/img/index_logo_white.png" height="60">
   </a>
