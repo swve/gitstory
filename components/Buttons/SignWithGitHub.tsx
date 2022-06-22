@@ -20,7 +20,7 @@ const BtnSignInWithGitHub = styled.button`
   color: white;
   font-size: 12px;
   font-family: "Inter";
-  font-weight: 800;
+  font-weight: 500;
   cursor: pointer;
   letter-spacing: 0.2px;
   border: solid 1px;
