@@ -7,7 +7,7 @@
   </a>
 </p>
 
-<p align="center"><br>
+<p align="center">
   <a href="https://gitstory.app">
     <img src="public/img/gitstory_web.png" height="400">
   </a>
