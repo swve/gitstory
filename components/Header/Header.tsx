@@ -90,6 +90,8 @@ export default function Header({ withLeftPart = true, withPaddings = false, ...p
         <title>{props.title} | Gitstory </title>
         <meta name="HandheldFriendly" content="True" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
+        <style data-href="https://fonts.googleapis.com/css2?family=Inter&display=optional"></style>
         {/* SEO */}
         <meta name="description" content={props.desc} />
         <meta name="referrer" content="no-referrer-when-downgrade" />
