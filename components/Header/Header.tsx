@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { useSession, signIn, signOut, getSession } from "next-auth/react";
+import { useSession, signIn, signOut } from "next-auth/react";
 import Cookies from "js-cookie";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { GitSt } from "@services/gitstory";
@@ -17,7 +17,6 @@ export default function Header({ withLeftPart = true, withPaddings = false, ...p
   const [openApiPopup, setOpenApiPopup] = React.useState(false);
 
   const router = useRouter();
-  const slug = router.query.slug || [];
 
   const handleHeaderSearchTextChange = (e) => {
     let parsedValues = e.target.value.split("/");
@@ -41,8 +40,7 @@ export default function Header({ withLeftPart = true, withPaddings = false, ...p
   }
 
   async function saveGitHubSessionToCookie() {
-    const sessionInfo = await getSession();
-    sessionInfo ? Cookies.set("github_at", sessionInfo.accessToken) : Cookies.remove("github_at");
+    session ? Cookies.set("github_at", session.accessToken) : Cookies.remove("github_at");
   }
 
   const keyPress = (e) => {
@@ -95,20 +93,20 @@ export default function Header({ withLeftPart = true, withPaddings = false, ...p
         {/* SEO */}
         <meta name="description" content={props.desc} />
         <meta name="referrer" content="no-referrer-when-downgrade" />
-        <meta property="og:site_name" content="Gitstory" />
+        <meta property="og:site_name" content="GitStory" />
         <meta property="og:type" content="website" />
         <meta property="og:title" content={props.title} />
         <meta property="og:description" content={props.desc} />
         <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
         <meta property="og:url" content="/" />
-        <meta property="og:image" content="/img/gitstory.png" />
+        <meta property="og:image" content="../img/gitstory.png" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={props.title} />
         <meta name="twitter:description" content={props.desc} />
         <meta name="twitter:url" content="/" />
-        <meta name="twitter:image" content="/img/gitstory.png" />
+        <meta name="twitter:image" content="../img/gitstory.png" />
         <meta name="twitter:site" content="@graphicmade" />
-        <meta property="og:site_name" content="gitstory"></meta>
+        <meta property="og:site_name" content="Gitstory"></meta>
         <meta property="og:type" content="website"></meta>
         <meta property="og:locale" content="en-EN"></meta>
         <meta name="twitter:creator" content="@graphicmade"></meta>
@@ -216,4 +214,3 @@ const LeftWrapper: any = styled.div`
     margin-top: 5px;
   }
 `;
-
