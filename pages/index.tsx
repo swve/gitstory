@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { useRouter } from "next/router";
+import Image from 'next/image';
 import KeyboardReturnIcon from "@mui/icons-material/KeyboardReturn";
 import Footer from "@components/Footer/Footer";
 import Header from "@components/Header/Header";
@@ -32,10 +33,11 @@ export default function Home() {
       <Header disable_api_usage_check withLeftPart={false} withPaddings={true} title="Home" desc="Internet's Git time machine."></Header>
       <LogoBox>
         {" "}
-        <img src="/img/index_logo.png" /> <span>Beta</span>
+        <Image alt="GitStory logo" src={"/img/index_logo.png"} height="70px" width="242px"></Image>
+         <span>Beta</span>
       </LogoBox>
       <DescriptionBox>
-        <img alt="Internet's git time machine" src="/img/description.png" />
+        <Image alt="Internet's git time machine" src={"/img/description.png"} height="235px" width="420px"></Image>
       </DescriptionBox>
       <Search>
         <SearchBox onKeyDown={keyPress} onChange={handleSearchTextChange} placeholder="Explore GitHub projects, e.g. : torvalds/linux"></SearchBox>

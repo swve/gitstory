@@ -56,7 +56,6 @@ const GMDProjects = styled.div`
   margin-top: 90px;
   padding: 10px;
   letter-spacing: 16px;
-  // align image and text horizontally
   display: flex;
   align-items: center;
   justify-content: center;
