@@ -94,24 +94,25 @@ export default function Header({ withLeftPart = true, withPaddings = false, ...p
         <meta name="description" content={props.desc} />
         <meta name="referrer" content="no-referrer-when-downgrade" />
         <meta property="og:site_name" content="GitStory" />
+        <meta name="apple-mobile-web-app-title" content="GitStory"></meta>
+        <meta content="en" http-equiv="Content-Language"></meta>
         <meta property="og:type" content="website" />
         <meta property="og:title" content={props.title} />
         <meta property="og:description" content={props.desc} />
-        <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+        <link rel="shortcut icon" href={process.env.WEBSITE_HOST + "/img/favicon.ico"} type="image/x-icon" />
         <meta property="og:url" content="/" />
-        <meta property="og:image" content="../img/gitstory.png" />
+        <meta property="og:image" content={process.env.WEBSITE_HOST + "/img/gitstory.png"} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={props.title} />
         <meta name="twitter:description" content={props.desc} />
-        <meta name="twitter:url" content="/" />
-        <meta name="twitter:image" content="../img/gitstory.png" />
+        <meta name="twitter:url" content={process.env.WEBSITE_HOST} />
+        <meta name="twitter:image" content={process.env.WEBSITE_HOST + "/img/gitstory.png"} />
         <meta name="twitter:site" content="@graphicmade" />
         <meta property="og:site_name" content="Gitstory"></meta>
         <meta property="og:type" content="website"></meta>
         <meta property="og:locale" content="en-EN"></meta>
         <meta name="twitter:creator" content="@graphicmade"></meta>
         <meta name="theme-color" content="#17161b"></meta>
-
         {/* SEO */}
 
         <link key="0" rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png"></link>
