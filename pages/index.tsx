@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import KeyboardReturnIcon from "@mui/icons-material/KeyboardReturn";
 import Footer from "@components/Footer/Footer";
 import Header from "@components/Header/Header";
+import { getExampleRepo } from "@services/example_repos";
 
 export default function Home() {
   const [searchValue, setSearchValue] = useState([]);
@@ -44,7 +45,7 @@ export default function Home() {
         <img alt="Internet's git time machine" src="/img/description.png" />
       </DescriptionBox>
       <Search>
-        <SearchBox onKeyDown={keyPress} onChange={handleSearchTextChange} placeholder="Explore GitHub projects, e.g. : torvalds/linux"></SearchBox>
+        <SearchBox onKeyDown={keyPress} onChange={handleSearchTextChange} placeholder={"Explore GitHub projects, e.g. : " + getExampleRepo()}></SearchBox>
         <span>
           Press Enter/Return to search <KeyboardReturnIcon sx={{ fontSize: 10 }} />
         </span>

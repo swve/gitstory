@@ -8,6 +8,7 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import { GitSt } from "@services/gitstory";
 import Dialog from "@components/Dialog/Dialog";
 import SignWithGitHub from "@components/Buttons/SignWithGitHub";
+import { getExampleRepo } from "@services/example_repos";
 
 export default function Header({ withLeftPart = true, withPaddings = false, ...props }) {
   const { data: session } = useSession();
@@ -124,7 +125,7 @@ export default function Header({ withLeftPart = true, withPaddings = false, ...p
         <SearchBoxHeader
           onKeyDown={keyPress}
           onChange={handleHeaderSearchTextChange}
-          placeholder="Explore GitHub projects, e.g. : torvalds/linux"
+          placeholder={"Explore GitHub projects, e.g. : " + getExampleRepo()}
         ></SearchBoxHeader>
       </LeftWrapper>
       <RightWrapper>
