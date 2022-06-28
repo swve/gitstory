@@ -67,15 +67,13 @@ export default function Header({ withLeftPart = true, withPaddings = false, ...p
     }
     if (session) {
       return (
-        <FancyRender>
-          <SessionWrapper>
-            <span>{session.user.name}</span>
-            <img src={session.user.image}></img>
-            <a aria-label="Logout" onClick={() => signOut()}>
-              <LogoutIcon sx={{ fontSize: 17 }} />
-            </a>
-          </SessionWrapper>
-        </FancyRender>
+        <SessionWrapper>
+          <span>{session.user.name}</span>
+          <img src={session.user.image}></img>
+          <a aria-label="Logout" onClick={() => signOut()}>
+            <LogoutIcon sx={{ fontSize: 17 }} />
+          </a>
+        </SessionWrapper>
       );
     } else {
       return (
