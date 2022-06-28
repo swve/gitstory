@@ -9,9 +9,10 @@ import { GitSt } from "@services/gitstory";
 import Dialog from "@components/Dialog/Dialog";
 import SignWithGitHub from "@components/Buttons/SignWithGitHub";
 import { getExampleRepo } from "@services/example_repos";
+import FancyRender from "@components/Loading/FancyRender";
 
 export default function Header({ withLeftPart = true, withPaddings = false, ...props }) {
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
 
   const [headerSearchValue, setHeaderSearchValue] = useState([]);
   const [apiUsageCounter, setApiUsageCounter] = useState(0);
@@ -32,7 +33,6 @@ export default function Header({ withLeftPart = true, withPaddings = false, ...p
     const visitor_limitation = 60;
     const signed_user_limitation = 5000;
     let api_limitation = session ? signed_user_limitation : visitor_limitation;
-    //alert("API usage: " + api_usage_counter + "/" + api_limitation);
     if (apiUsageCounter > api_limitation) {
       setOpenApiPopup(true);
     } else {
@@ -54,7 +54,6 @@ export default function Header({ withLeftPart = true, withPaddings = false, ...p
     router.push("/");
   };
 
-  // Execute functions
   saveGitHubSessionToCookie();
   if (props.disable_api_usage_check) {
     //setOpenApiPopup(true);
@@ -63,9 +62,12 @@ export default function Header({ withLeftPart = true, withPaddings = false, ...p
   }
 
   const ProfileBox = () => {
+    if (status === "loading") {
+      return <SignWithGitHub withLoading onclick={() => signIn()}></SignWithGitHub>;
+    }
     if (session) {
       return (
-        <>
+        <FancyRender>
           <SessionWrapper>
             <span>{session.user.name}</span>
             <img src={session.user.image}></img>
@@ -73,14 +75,15 @@ export default function Header({ withLeftPart = true, withPaddings = false, ...p
               <LogoutIcon sx={{ fontSize: 17 }} />
             </a>
           </SessionWrapper>
+        </FancyRender>
+      );
+    } else {
+      return (
+        <>
+          <SignWithGitHub onclick={() => signIn()}> </SignWithGitHub>
         </>
       );
     }
-    return (
-      <>
-        <SignWithGitHub onclick={() => signIn()}> </SignWithGitHub>
-      </>
-    );
   };
 
   return (

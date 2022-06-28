@@ -1,16 +1,23 @@
 import React from "react";
 import styled from "styled-components";
 import GitHubIcon from "@mui/icons-material/GitHub";
+import CircularProgress from "@mui/material/CircularProgress";
 
 function SignWithGitHub(props) {
-  return (
-    <>
+  if (props.withLoading) {
+    return (
+      <BtnSignInWithGitHub onClick={props.onclick}>
+        <CircularProgress style={{ color: "white" }} size={15} thickness={6} />
+      </BtnSignInWithGitHub>
+    );
+  } else {
+    return (
       <BtnSignInWithGitHub onClick={props.onclick}>
         <GitHubIcon sx={{ marginRight: 1, fontSize: 15 }} />
         Sign in with GitHub
       </BtnSignInWithGitHub>
-    </>
-  );
+    );
+  }
 }
 
 export default SignWithGitHub;
