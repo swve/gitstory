@@ -3,9 +3,11 @@ import styled from "styled-components";
 import CircularProgress from "@mui/material/CircularProgress";
 
 function Loading() {
-  return <LoadingBox>
-    <CircularProgress style={{ color: "white" }} size={90} thickness={6} />
-  </LoadingBox>;
+  return (
+    <LoadingBox>
+      <CircularProgress style={{ color: "white" }} size={90} thickness={6} />
+    </LoadingBox>
+  );
 }
 
 const LoadingBox = styled.div`
@@ -17,7 +19,7 @@ const LoadingBox = styled.div`
   overflow: clip;
   font-size: 14px;
   box-shadow: 0 9px 11px 2px rgb(3 8 19 / 20%);
-margin-top: 30px;
+  margin-top: 30px;
   position: relative;
   padding: 120px;
   display: flex;

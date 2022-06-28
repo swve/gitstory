@@ -5,7 +5,7 @@ import { randomInt } from "crypto";
 import { useRouter } from "next/router";
 import { useSelector, useDispatch } from "react-redux";
 import { SelectedDateInterface, updateDate } from "@redux/actions";
-import { Divider, Tooltip } from "@mui/material";
+import { Tooltip } from "@mui/material";
 import { GitSt } from "@services/gitstory";
 import CircularProgress from "@mui/material/CircularProgress";
 import Link from "next/link";
@@ -33,6 +33,7 @@ export default function Calendar(props) {
   // init weekdays & Months
   const weekdaysArray = ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"];
   const monthsArray = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
   // Get date object - Dates in month - First day of month
   let date = dayjs(props.date).locale("fr");
   let daysInMonth = date.daysInMonth();
@@ -60,7 +61,6 @@ export default function Calendar(props) {
     isScanOn ? null : setIsLoading(false);
   }
 
-  //
   async function scanMonth(month, year) {
     setIsScanOn(true);
     setIsLoading(true);
@@ -75,11 +75,6 @@ export default function Calendar(props) {
     fillCalendar();
   }, [isLoading]);
 
-  // 📣 Interaction
-  //--------------------------------
-
-  // 📣 Rendering
-  //--------------------------------
   function renderCalendar() {
     if (isLoading) {
       return (
@@ -157,13 +152,8 @@ export default function Calendar(props) {
     }
   }
 
-  // 📣 Final Rendering
-  //--------------------------------
   return <div>{renderCalendar()}</div>;
 }
-
-// 📣 Styling
-//--------------------------------
 
 const MonthBox = styled.div`
   display: flex;

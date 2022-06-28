@@ -64,7 +64,6 @@ export default function Repo() {
 
   useEffect(() => {
     if (router.isReady) {
-      // Get Date
       if (slug[3] === "date") {
         let date = new Date(parseInt(slug[4]), parseInt(slug[5]) - 1, parseInt(slug[6]));
         updateReduxDate();
@@ -135,10 +134,9 @@ export default function Repo() {
                           <CommitIcon sx={{ fontSize: 30 }} />
                         </Tooltip>
                       </a>
-                      {console.log(commit)}
                       <a target="_blank" href={`https://github.com/${slug[1]}/${slug[2]}/tree/${commit.sha}/`}>
                         <Tooltip title="Travel in time to that commit, in GitHub">
-                          <AccessTimeFilledIcon sx={{ fontSize: 30  }} />
+                          <AccessTimeFilledIcon sx={{ fontSize: 30 }} />
                         </Tooltip>
                       </a>
                     </CommitRightGlobal>
@@ -234,7 +232,6 @@ const SubRepoInfo = styled.div`
   }
 `;
 
-// Commit Box Design
 const CommitBox = styled.li`
   list-style: none;
   margin: 10px;
@@ -260,7 +257,7 @@ const CommitRightGlobal = styled.div`
     margin-left: 20px;
   }
 
-  svg{
+  svg {
     background-color: #10131b8f;
     padding: 5px;
     border-radius: 3px;
