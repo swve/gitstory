@@ -9,7 +9,6 @@ import { GitSt } from "@services/gitstory";
 import Dialog from "@components/Dialog/Dialog";
 import SignWithGitHub from "@components/Buttons/SignWithGitHub";
 import { getExampleRepo } from "@services/example_repos";
-import FancyRender from "@components/Loading/FancyRender";
 
 export default function Header({ withLeftPart = true, withPaddings = false, ...props }) {
   const { data: session, status } = useSession();
@@ -69,8 +68,8 @@ export default function Header({ withLeftPart = true, withPaddings = false, ...p
       return (
         <SessionWrapper>
           <span>{session.user.name}</span>
-          <img src={session.user.image}></img>
-          <a aria-label="Logout" onClick={() => signOut()}>
+          <img alt="Profile photo" src={session.user.image}></img>
+          <a href="#" onClick={() => signOut()}>
             <LogoutIcon sx={{ fontSize: 17 }} />
           </a>
         </SessionWrapper>
@@ -88,6 +87,7 @@ export default function Header({ withLeftPart = true, withPaddings = false, ...p
     <HeaderWrapper withPaddings={withPaddings}>
       <Head>
         <meta charSet="utf-8" />
+
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <title>{props.title} | GitStory </title>
         <meta name="HandheldFriendly" content="True" />
@@ -122,7 +122,7 @@ export default function Header({ withLeftPart = true, withPaddings = false, ...p
         <link key="2" rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png"></link>
       </Head>
       <LeftWrapper withLeftPart={withLeftPart}>
-        <img onClick={goHome} src="/img/index_logo.png" width="120" height="34" />
+        <img onClick={goHome} alt="GitStory logo" src="/img/index_logo.png" width="120" height="34" />
         <SearchBoxHeader
           onKeyDown={keyPress}
           onChange={handleHeaderSearchTextChange}

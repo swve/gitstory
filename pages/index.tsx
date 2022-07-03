@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useRouter } from "next/router";
 import KeyboardReturnIcon from "@mui/icons-material/KeyboardReturn";
@@ -6,7 +6,7 @@ import Footer from "@components/Footer/Footer";
 import Header from "@components/Header/Header";
 import { getExampleRepo } from "@services/example_repos";
 
-export default function Home() {
+export default function Home(props) {
   const [searchValue, setSearchValue] = useState([]);
   const router = useRouter();
 
@@ -39,13 +39,13 @@ export default function Home() {
       ></Header>
       <LogoBox>
         {" "}
-        <img src="/img/index_logo.png" /> <span>Beta</span>
+        <img alt="GitStory logo" src="/img/index_logo.png" /> <span>Beta</span>
       </LogoBox>
       <DescriptionBox>
         <img alt="Internet's git time machine" src="/img/description.png" />
       </DescriptionBox>
       <Search>
-        <SearchBox onKeyDown={keyPress} onChange={handleSearchTextChange} placeholder={"Explore GitHub projects, e.g. : " + getExampleRepo()}></SearchBox>
+        <SearchBox onKeyDown={keyPress} onChange={handleSearchTextChange} placeholder={"Explore GitHub projects, e.g. : " + props.exampleRepo}></SearchBox>
         <span>
           Press Enter/Return to search <KeyboardReturnIcon sx={{ fontSize: 10 }} />
         </span>
@@ -53,6 +53,16 @@ export default function Home() {
       <Footer home={true}></Footer>
     </HomePage>
   );
+}
+
+export async function getStaticProps() {
+  const exampleRepo = getExampleRepo();
+
+  return {
+    props: {
+      exampleRepo,
+    },
+  };
 }
 
 const HomePage = styled.div`
