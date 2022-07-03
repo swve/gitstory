@@ -8,9 +8,10 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import { GitSt } from "@services/gitstory";
 import Dialog from "@components/Dialog/Dialog";
 import SignWithGitHub from "@components/Buttons/SignWithGitHub";
+import { getExampleRepo } from "@services/example_repos";
 
 export default function Header({ withLeftPart = true, withPaddings = false, ...props }) {
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
 
   const [headerSearchValue, setHeaderSearchValue] = useState([]);
   const [apiUsageCounter, setApiUsageCounter] = useState(0);
@@ -31,7 +32,6 @@ export default function Header({ withLeftPart = true, withPaddings = false, ...p
     const visitor_limitation = 60;
     const signed_user_limitation = 5000;
     let api_limitation = session ? signed_user_limitation : visitor_limitation;
-    //alert("API usage: " + api_usage_counter + "/" + api_limitation);
     if (apiUsageCounter > api_limitation) {
       setOpenApiPopup(true);
     } else {
@@ -53,7 +53,6 @@ export default function Header({ withLeftPart = true, withPaddings = false, ...p
     router.push("/");
   };
 
-  // Execute functions
   saveGitHubSessionToCookie();
   if (props.disable_api_usage_check) {
     //setOpenApiPopup(true);
@@ -62,32 +61,35 @@ export default function Header({ withLeftPart = true, withPaddings = false, ...p
   }
 
   const ProfileBox = () => {
+    if (status === "loading") {
+      return <SignWithGitHub withLoading onclick={() => signIn()}></SignWithGitHub>;
+    }
     if (session) {
       return (
+        <SessionWrapper>
+          <span>{session.user.name}</span>
+          <img alt="Profile photo" src={session.user.image}></img>
+          <a href="#" onClick={() => signOut()}>
+            <LogoutIcon sx={{ fontSize: 17 }} />
+          </a>
+        </SessionWrapper>
+      );
+    } else {
+      return (
         <>
-          <SessionWrapper>
-            <span>{session.user.name}</span>
-            <img src={session.user.image}></img>
-            <a aria-label="Logout" onClick={() => signOut()}>
-              <LogoutIcon sx={{ fontSize: 17 }} />
-            </a>
-          </SessionWrapper>
+          <SignWithGitHub onclick={() => signIn()}> </SignWithGitHub>
         </>
       );
     }
-    return (
-      <>
-        <SignWithGitHub onclick={() => signIn()}> </SignWithGitHub>
-      </>
-    );
   };
 
   return (
     <HeaderWrapper withPaddings={withPaddings}>
       <Head>
         <meta charSet="utf-8" />
+
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-        <title>{props.title} | Gitstory </title>
+        <title>{props.title} | GitStory </title>
         <meta name="HandheldFriendly" content="True" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         {/* SEO */}
@@ -120,11 +122,11 @@ export default function Header({ withLeftPart = true, withPaddings = false, ...p
         <link key="2" rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png"></link>
       </Head>
       <LeftWrapper withLeftPart={withLeftPart}>
-        <img onClick={goHome} src="/img/index_logo.png" width="120" height="34" />
+        <img onClick={goHome} alt="GitStory logo" src="/img/index_logo.png" width="120" height="34" />
         <SearchBoxHeader
           onKeyDown={keyPress}
           onChange={handleHeaderSearchTextChange}
-          placeholder="Explore GitHub projects, e.g. : torvalds/linux"
+          placeholder={"Explore GitHub projects, e.g. : " + getExampleRepo()}
         ></SearchBoxHeader>
       </LeftWrapper>
       <RightWrapper>

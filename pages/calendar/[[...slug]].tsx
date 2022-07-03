@@ -74,7 +74,7 @@ export default function Repo() {
     return (
       <>
         <GradientHeader>
-          <Header title={`${slug[1]}/${slug[2]}`}></Header>
+          <Header title={`${slug[1]}/${slug[2]}`} desc={`Calendar view for ${slug[1]}/${slug[2]}`}></Header>
           <RepoBar>
             {slug[1]}/{slug[2]}
           </RepoBar>

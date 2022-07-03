@@ -1,13 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useRouter } from "next/router";
 import KeyboardReturnIcon from "@mui/icons-material/KeyboardReturn";
 import Footer from "@components/Footer/Footer";
 import Header from "@components/Header/Header";
+import { getExampleRepo } from "@services/example_repos";
 
 export default function Home() {
-  const [searchValue, setSearchValue] = useState([]);
   const router = useRouter();
+  const exampleRepo = getExampleRepo();
+
+  const [searchValue, setSearchValue] = useState([]);
+  const [exampleRepoValue, setExampleRepoValue] = useState("swve/gitstory");
+
+  function changeRepoValue() {
+    setExampleRepoValue(exampleRepo);
+  }
 
   const handleSearchTextChange = (e) => {
     let value = e.target.value;
@@ -27,18 +35,30 @@ export default function Home() {
     }
   };
 
+  useEffect(() => {
+    changeRepoValue();  
+  }
+  , []);
+
+
   return (
     <HomePage>
-      <Header disable_api_usage_check withLeftPart={false} withPaddings={true} title="Home" desc="Internet's Git time machine."></Header>
+      <Header
+        disable_api_usage_check
+        withLeftPart={false}
+        withPaddings={true}
+        title="Internet's Git Time machine"
+        desc="Go back in time and explore your favorite Open source projects "
+      ></Header>
       <LogoBox>
         {" "}
-        <img src="/img/index_logo.png" /> <span>Beta</span>
+        <img alt="GitStory logo" src="/img/index_logo.png" /> <span>Beta</span>
       </LogoBox>
       <DescriptionBox>
         <img alt="Internet's git time machine" src="/img/description.png" />
       </DescriptionBox>
       <Search>
-        <SearchBox onKeyDown={keyPress} onChange={handleSearchTextChange} placeholder="Explore GitHub projects, e.g. : torvalds/linux"></SearchBox>
+        <SearchBox onKeyDown={keyPress} onChange={handleSearchTextChange} placeholder={"Explore GitHub projects, e.g. : " + exampleRepoValue}></SearchBox>
         <span>
           Press Enter/Return to search <KeyboardReturnIcon sx={{ fontSize: 10 }} />
         </span>

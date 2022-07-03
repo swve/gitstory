@@ -5,12 +5,8 @@ import { randomInt } from "crypto";
 import FancyRender from "@components/Loading/FancyRender";
 
 export default function YearCalendar({ withRelativeTop = false, year }) {
-  // 📣 Filling & Init the YearCalendar
-  //--------------------------------
-
   let year_dates = [];
 
-  // Fill a Year of Month dates
   function createYearDates(year) {
     for (let i = 0; i < 12; i++) {
       year_dates.push(`${year}-${i + 1}-1`);
@@ -19,8 +15,6 @@ export default function YearCalendar({ withRelativeTop = false, year }) {
 
   createYearDates(year);
 
-  // 📣 Final Rendering
-  //--------------------------------
   return (
     <FancyRender>
       <YearCalendarBox>
@@ -32,8 +26,6 @@ export default function YearCalendar({ withRelativeTop = false, year }) {
   );
 }
 
-// 📣 Styling
-//--------------------------------
 const YearCalendarBox = styled.div`
   top: -150px;
   position: relative;
