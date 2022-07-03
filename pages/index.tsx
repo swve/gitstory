@@ -6,9 +6,16 @@ import Footer from "@components/Footer/Footer";
 import Header from "@components/Header/Header";
 import { getExampleRepo } from "@services/example_repos";
 
-export default function Home(props) {
-  const [searchValue, setSearchValue] = useState([]);
+export default function Home() {
   const router = useRouter();
+  const exampleRepo = getExampleRepo();
+
+  const [searchValue, setSearchValue] = useState([]);
+  const [exampleRepoValue, setExampleRepoValue] = useState("swve/gitstory");
+
+  function changeRepoValue() {
+    setExampleRepoValue(exampleRepo);
+  }
 
   const handleSearchTextChange = (e) => {
     let value = e.target.value;
@@ -28,6 +35,12 @@ export default function Home(props) {
     }
   };
 
+  useEffect(() => {
+    changeRepoValue();  
+  }
+  , []);
+
+
   return (
     <HomePage>
       <Header
@@ -45,7 +58,7 @@ export default function Home(props) {
         <img alt="Internet's git time machine" src="/img/description.png" />
       </DescriptionBox>
       <Search>
-        <SearchBox onKeyDown={keyPress} onChange={handleSearchTextChange} placeholder={"Explore GitHub projects, e.g. : " + props.exampleRepo}></SearchBox>
+        <SearchBox onKeyDown={keyPress} onChange={handleSearchTextChange} placeholder={"Explore GitHub projects, e.g. : " + exampleRepoValue}></SearchBox>
         <span>
           Press Enter/Return to search <KeyboardReturnIcon sx={{ fontSize: 10 }} />
         </span>
@@ -53,16 +66,6 @@ export default function Home(props) {
       <Footer home={true}></Footer>
     </HomePage>
   );
-}
-
-export async function getStaticProps() {
-  const exampleRepo = getExampleRepo();
-
-  return {
-    props: {
-      exampleRepo,
-    },
-  };
 }
 
 const HomePage = styled.div`
