@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import KeyboardReturnIcon from "@mui/icons-material/KeyboardReturn";
 import Footer from "@components/Footer/Footer";
 import Header from "@components/Header/Header";
+import { motion } from "framer-motion";
 import { getExampleRepo } from "@services/example_repos";
 
 export default function Home() {
@@ -36,10 +37,8 @@ export default function Home() {
   };
 
   useEffect(() => {
-    changeRepoValue();  
-  }
-  , []);
-
+    changeRepoValue();
+  }, []);
 
   return (
     <HomePage>
@@ -50,20 +49,68 @@ export default function Home() {
         title="Internet's Git Time machine"
         desc="Go back in time and explore your favorite Open source projects "
       ></Header>
-      <LogoBox>
-        {" "}
-        <img alt="GitStory logo" src="/img/index_logo.png" /> <span>Beta</span>
-      </LogoBox>
-      <DescriptionBox>
-        <img alt="Internet's git time machine" src="/img/description.png" />
-      </DescriptionBox>
-      <Search>
-        <SearchBox onKeyDown={keyPress} onChange={handleSearchTextChange} placeholder={"Explore GitHub projects, e.g. : " + exampleRepoValue}></SearchBox>
-        <span>
-          Press Enter/Return to search <KeyboardReturnIcon sx={{ fontSize: 10 }} />
-        </span>
-      </Search>
-      <Footer home={true}></Footer>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1 , y: 0}}
+        transition={{
+          type: "spring",
+          stiffness: 260,
+          damping: 70,
+          delay: 0.2,
+        }}
+        exit={{ opacity: 1 }}
+      >
+        <LogoBox>
+          {" "}
+          <img alt="GitStory logo" src="/img/index_logo.png" /> <span>Beta</span>
+        </LogoBox>
+      </motion.div>
+      <motion.div
+        initial={{ opacity: 0, y: 100 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{
+          type: "spring",
+          stiffness: 260,
+          damping: 70,
+          delay: 0.4,
+        }}
+        exit={{ opacity: 1 }}
+      >
+        <DescriptionBox>
+          <img alt="Internet's git time machine" src="/img/description.png" />
+        </DescriptionBox>
+      </motion.div>
+      <motion.div
+        initial={{ opacity: 0, y: 120 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{
+          type: "spring",
+          stiffness: 260,
+          damping: 70,
+          delay: 0.5,
+        }}
+        exit={{ opacity: 1 }}
+      >
+        <Search>
+          <SearchBox onKeyDown={keyPress} onChange={handleSearchTextChange} placeholder={"Explore GitHub projects, e.g. : " + exampleRepoValue}></SearchBox>
+          <span>
+            Press Enter/Return to search <KeyboardReturnIcon sx={{ fontSize: 10 }} />
+          </span>
+        </Search>
+      </motion.div>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{
+          type: "spring",
+          stiffness: 260,
+          damping: 70,
+          delay: 1,
+        }}
+        exit={{ opacity: 1 }}
+      >
+        <Footer home={true}></Footer>
+      </motion.div>
     </HomePage>
   );
 }
