@@ -21,7 +21,7 @@
     "js-cookie": "^3.0.1",
     "localStorage": "^1.0.4",
     "next": "^12.1.0",
-    "next-auth": "^4.9.0",
+    "next-auth": "^4.10.3",
     "next-plausible": "^3.1.9",
     "nextjs-progressbar": "^0.0.14",
     "prop-types": "^15.7.2",
