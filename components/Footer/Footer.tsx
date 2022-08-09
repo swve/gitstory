@@ -6,7 +6,7 @@ export default function Footer(props) {
   return (
     <>
       <FooterCopyright home={props.home}>
-        © 2022 Sweave &nbsp;&nbsp;⏤{" "}
+        © 2022 <a className="sweave-link" href="http://twitter.com/swveio" target={"_blank"}> Sweave</a> &nbsp;&nbsp;⏤{" "}
         <ul>
           <li>
             <Link href={`/about`}>
@@ -81,6 +81,10 @@ const FooterCopyright: any = styled.div`
   margin-top: ${(props: any) => (props.home ? "8%" : "2%")};
   padding-bottom: ${(props: any) => (props.home ? "1.1%" : "1%")};
 
+  .sweave-link  {
+    padding-left: 5px;
+
+  }
   @media (max-width: 768px) {
     font-size: 10px;
   }

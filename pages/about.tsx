@@ -39,7 +39,7 @@ function About() {
                 💜
               </span>{" "}
               by{" "}
-              <a target={"_blank"} href="https://twitter.com/sw3ave">
+              <a target={"_blank"} href="https://twitter.com/swveio">
                 <img src="/img/sweave.png" height="12" alt="" />
               </a>
             </p>

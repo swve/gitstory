@@ -11,7 +11,6 @@ const repos = [
   "torvalds/linux",
   "apple/swift",
   "chromium/chromium",
-  "mozilla/firefox",
   "twbs/bootstrap",
   "facebook/react-native",
   "python/cpython",
