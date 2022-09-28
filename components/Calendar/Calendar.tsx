@@ -99,7 +99,7 @@ export default function Calendar(props) {
           </HeadDaysOfTheWeek>
           <LoadingPanel>
             <CircularProgress style={{ color: "white" }} size={60} thickness={6} />
-            <h5>(BETA) Searching for commits... this may take minutes</h5>
+            <h5>Searching for commits... this may take minutes</h5>
           </LoadingPanel>
         </CalendarBox>
       );
@@ -111,7 +111,7 @@ export default function Calendar(props) {
             arrow
             enterDelay={800}
             placement="top"
-            title={"🔬 BETA: Check " + monthsArray[month - 1] + " commits activity  "}
+            title={"Check " + monthsArray[month - 1] + " commits activity  "}
           >
             <MonthBox
               onClick={() => {

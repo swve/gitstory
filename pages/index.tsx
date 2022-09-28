@@ -62,7 +62,7 @@ export default function Home() {
       >
         <LogoBox>
           {" "}
-          <img alt="GitStory logo" src="/img/index_logo.png" /> <span>Beta</span>
+          <img alt="GitStory logo" src="/img/index_logo.png" /> 
         </LogoBox>
       </motion.div>
       <motion.div

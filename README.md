@@ -29,7 +29,7 @@ GitStory is a Wayback Time machine app for GitHub projects, powered by the GitHu
 
 Got any features ideas ? Feel free to submit yours!
 
-> ⚠️ GitStory is still in Beta, please feel free to report bugs you might find, thanks!
+> ⚠️ Please feel free to report bugs you might find, thanks!
 
 # Kit
 
