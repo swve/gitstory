@@ -5,8 +5,11 @@ import { Provider } from "react-redux";
 import { SessionProvider } from "next-auth/react";
 import { store } from "@redux/store";
 import PlausibleProvider from "next-plausible";
+import { Session } from "next-auth";
 
-function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
+function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps<{
+  session: Session;
+}>) {
   return (
     <>
       <PlausibleProvider domain={process.env.ANALYTICS_DOMAIN} enabled customDomain={process.env.ANALYTICS_CUSTOM_DOMAIN} selfHosted={true}>
