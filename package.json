@@ -16,7 +16,7 @@
     "@reduxjs/toolkit": "^1.8.0",
     "@types/react-redux": "^7.1.23",
     "@vercel/analytics": "^0.1.11",
-    "axios": "^0.26.1",
+    "axios": "^1.8.2",
     "dayjs": "^1.10.6",
     "framer-motion": "^6.2.10",
     "gitstorykit": "^1.1.2",
