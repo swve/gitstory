@@ -42,10 +42,10 @@ export class GitSt {
       let hour_later_from_start = apiUsageStart.setHours(apiUsageStart.getHours() + 1);
 
       this.api_usage_counter = parseInt(Cookies.get("apiUsage")) + 1;
-      Cookies.set("apiUsage", this.api_usage_counter, { expires: new Date(hour_later_from_start) });
+      Cookies.set("apiUsage", String(this.api_usage_counter), { expires: new Date(hour_later_from_start) });
     } else {
-      Cookies.set("apiUsageStart", today);
-      Cookies.set("apiUsage", this.api_usage_counter);
+      Cookies.set("apiUsageStart", today.toISOString());
+      Cookies.set("apiUsage", String(this.api_usage_counter));
     }
   }
 

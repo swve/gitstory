@@ -9,34 +9,22 @@ export default function Footer(props) {
         © 2022 <a className="sweave-link" href="http://twitter.com/swveio" target={"_blank"}> Sweave</a> &nbsp;&nbsp;⏤{" "}
         <ul>
           <li>
-            <Link href={`/about`}>
-              <a>About</a>
-            </Link>
+            <Link href="/about">About</Link>
           </li>
           <li>
-            <Link href={`/privacy`}>
-              <a>Privacy</a>
-            </Link>
+            <Link href="/privacy">Privacy</Link>
           </li>
           <li>
-            <Link href={`/kit`}>
-              <a>Kit</a>
-            </Link>
+            <Link href="/kit">Kit</Link>
           </li>
           <li>
-            <Link href={`https://github.com/swve/gitstory`}>
-              <a target={"_blank"}>GitHub</a>
-            </Link>
+            <Link href="https://github.com/swve/gitstory" target="_blank">GitHub</Link>
           </li>
           <li>
-            <Link href={`/sponsoring`}>
-              <a>Sponsoring</a>
-            </Link>
+            <Link href="/sponsoring">Sponsoring</Link>
           </li>
           <li>
-            <Link href={`https://forms.gle/GRacRdWYuGCjA1HZ8`}>
-              <a target={"_blank"}>Feedback</a>
-            </Link>
+            <Link href="https://forms.gle/GRacRdWYuGCjA1HZ8" target="_blank">Feedback</Link>
           </li>
         </ul>
       </FooterCopyright>

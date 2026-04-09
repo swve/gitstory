@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import dayjs from "dayjs";
 import styled from "styled-components";
-import { randomInt } from "crypto";
 import { useRouter } from "next/router";
 import { useSelector, useDispatch } from "react-redux";
 import { SelectedDateInterface, updateDate } from "@redux/actions";
@@ -92,7 +91,7 @@ export default function Calendar(props) {
             {weekdaysArray.map((day) => {
               return (
                 <DayOfWeek>
-                  <i key={day + randomInt}>{day} </i>
+                  <i key={day}>{day} </i>
                 </DayOfWeek>
               );
             })}
@@ -125,7 +124,7 @@ export default function Calendar(props) {
             {weekdaysArray.map((day) => {
               return (
                 <DayOfWeek>
-                  <i key={day + randomInt}>{day} </i>
+                  <i key={day}>{day} </i>
                 </DayOfWeek>
               );
             })}
@@ -135,12 +134,12 @@ export default function Calendar(props) {
               return (
                 <DayOfMonth>
                   <DayBox
-                    key={day + randomInt}
+                    key={day}
                     activity={monthActivityState[day - 1] ? (monthActivityState[day - 1].commits > 0 ? monthActivityState[day - 1].commits : 0) : false}
                     selected={parseInt(day) == state.day && month == state.month && year == state.year ? "selected" : null}
                   >
                     <Link href={`/commits/${router.query.slug[0]}/${router.query.slug[1]}/${router.query.slug[2]}/date/${year}/${month}/${day}`}>
-                      <a>{day}</a>
+                      {day}
                     </Link>
                   </DayBox>
                 </DayOfMonth>

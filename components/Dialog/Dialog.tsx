@@ -12,9 +12,7 @@ function Dialog(props) {
         <p>GitStory uses the GitHub Public API which have a usage rate limitation for non-authenticated users, you've just reached that limit.</p>
         <p>Please consider sign in using your GitHub account to be able to continue using GitStory, or please wait for 1 hour.</p>
         <DialogActions>
-          <Link href="/privacy">
-            <a>Privacy Policy</a>
-          </Link>{" "}
+          <Link href="/privacy">Privacy Policy</Link>{" "}
           <SignWithGitHub onclick={() => signIn()}></SignWithGitHub>
         </DialogActions>
       </DialogBox>

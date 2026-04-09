@@ -98,11 +98,9 @@ export default function Repo() {
           <SubRepoInfo>
             <BackToCalendarBtn>
               <Link href={`/calendar/${slug[0]}/${slug[1]}/${slug[2]}`}>
-                <a>
-                  <Tooltip title="Back to Calendar">
-                    <KeyboardBackspaceIcon sx={{ fontSize: "20px" }} />
-                  </Tooltip>
-                </a>
+                <Tooltip title="Back to Calendar">
+                  <KeyboardBackspaceIcon sx={{ fontSize: "20px" }} />
+                </Tooltip>
               </Link>
             </BackToCalendarBtn>
             <span>

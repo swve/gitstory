@@ -1,7 +1,6 @@
 import React from "react";
 import Calendar from "@components/Calendar/Calendar";
 import styled from "styled-components";
-import { randomInt } from "crypto";
 import FancyRender from "@components/Loading/FancyRender";
 
 export default function YearCalendar({ withRelativeTop = false, year }) {
